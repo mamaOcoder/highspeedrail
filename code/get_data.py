@@ -484,9 +484,11 @@ def get_gdp():
     gdp_df['MainCity'] = mainCity + ',' + mainState.str.rstrip()
     
     # Fix some mismatched names to match pop_df
-    gdp_df.loc[:, 'MainCity'] = gdp_df['MainCity'].str.replace('Poughkeepsie, NY','Kiryas Joel, NY')
-    gdp_df.loc[:, 'MainCity'] = gdp_df['MainCity'].str.replace('California, MD','Lexington Park, MD')
-    gdp_df.loc[:, 'MainCity'] = gdp_df['MainCity'].str.replace('The Villages, FL','Wildwood, FL')
+    # Manually fix cities some city names
+    gdp_df.loc[gdp_df['MainCity']=='Winston, NC','MainCity'] = 'Winston-Salem, NC'
+    gdp_df.loc[gdp_df['MainCity']=='Poughkeepsie, NY', 'MainCity'] = 'Kiryas Joel, NY'
+    gdp_df.loc[gdp_df['MainCity']=='California, MD', 'MainCity'] = 'Lexington Park, MD'
+    gdp_df.loc[gdp_df['MainCity']=='The Villages, FL', 'MainCity'] = 'Wildwood, FL'
     
     return(gdp_df)
     
