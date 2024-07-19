@@ -1,0 +1,18 @@
+# Ignore all .log files
+*.log
+
+# Ignore dev directory
+code/dev/
+
+# Ignore checkpoint Python files
+*.ipynb_checkpoints
+__pycache__/
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore environment variable files
+.env
+
+# Ignore temp folder
+data/pickled/temp/

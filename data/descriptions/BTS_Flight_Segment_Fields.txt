@@ -1,0 +1,99 @@
+Descriptions pulled from the Department of Transportation's website for the raw data that was pulled. Preprocessing has been completed and cleaned data can be found in the data/pickled directory. Note that there may be some more fitlering that we want to do.
+
+In the data/pickled folder:
+    flights_df.pickle: contains a dataframe with * fields.
+    flights_df_all_fields.pickle: contains a dataframe with all of the fields listed.
+
+T_T100D_SEGMENT_ALL_CARRIER.csv
+This table contains domestic non-stop segment data reported by both U.S. and foreign air carriers, including carrier, origin, destination, aircraft type and service class for transported passengers, freight and mail, available capacity, scheduled departures, departures performed, aircraft hours, and load factor when both origin and destination airports are located within the boundaries of the United States and its territories. For a uniform end date for the combined databases, the last 3 months U.S. carrier domestic data released in T-100 Domestic Segment (U.S. Carriers Only) are not included.
+
+*DEPARTURES_SCHEDULED: Number of scheduled flights
+*DEPARTURES_PERFORMED: Number of completed flights (not cancelled)
+PAYLOAD: Available payload (pounds)
+*SEATS: Number of seats available
+*PASSENGERS: Number of passengers on flights
+FREIGHT: Amount of freight on flights (pounds)
+MAIL: Amount of mail on flights (pounds)
+*DISTANCE: Distance between airports (miles)
+*RAMP_TO_RAMP: Ramp to Ramp Time (minutes)
+*AIR_TIME: Airborne Time (minutes)
+*UNIQUE_CARRIER: Unique Carrier Code
+*AIRLINE_ID: An identification number assigned by US DOT to identify a unique airline (carrier).
+*UNIQUE_CARRIER_NAME: Unique Carrier Name.
+UNIQUE_CARRIER_ENTITY: Unique Entity for a Carrier's Operation Region.
+*REGION: Carrier's Operation Region. Carriers Report Data by Operation Region
+    A	Atlantic
+    D	Domestic
+    I	International
+    L	Latin America
+    P	Pacific
+CARRIER: Code assigned by IATA and commonly used to identify a carrier. Should be same as UNIQUE_CARRIER unless looking over many years (as it can change over time due to mergers and things like that).
+CARRIER_NAME: Carrier Name. SHould be same as UNIQUE_CARRIER_NAME.
+CARRIER_GROUP: Carrier Group Code. Used in Legacy Analysis (so don't need)
+*CARRIER_GROUP_NEW: 
+    0	Foreign Carriers
+    1	Large Regional Carriers (carriers with annual revenue of $20 million to $100 million)
+    2	National Carriers (carriers with annual revenue over $100 million to $1 billion)
+    3	Major Carriers (carriers with annual revenue over $1 billion)
+    4	Medium Regional Carriers (carriers with annual revenue under $20 million)
+    5	Small Certificated Carriers (carrier holding certificate issued under 49 U.S.C. section 41101 and operating aircraft designed to have a maximum seating capacity of 60 or less seat or a maximum payload of 18,000 pounds or less.)
+    6	Commuter Carriers (air taxi operator which performs at least five round trips per week between two or more points and publishes flight schedules which specify the times, days of the weeks and plans between which such flights are performed. )
+    7	All Cargo Carriers operating under cerificates issued under 49 U.S.C. section 41103
+    9	Commuter Carriers (Air Taxi providing Essential Air Service)
+ORIGIN_AIRPORT_ID: An identification number assigned by US DOT to identify a unique airport. Used for analysis across years in case airport code changes.
+ORIGIN_AIRPORT_SEQ_ID: An identification number assigned by US DOT to identify a unique airport at a given point of time.
+*ORIGIN_CITY_MARKET_ID: City Market ID is an identification number assigned by US DOT to identify a city market. Use this field to consolidate airports serving the same city market. Doesn't seem to quite match MSAs (i.e. Baltimore is grouped with Washington, DC)
+*ORIGIN: IATA airport code for origin
+*ORIGIN_CITY_NAME: Origin city, state (i.e. Chicago, IL)
+ORIGIN_STATE_ABR: Origin State Code
+ORIGIN_STATE_FIPS: Origin State FIPS (U.S. Federal Information Processing Standard Codes)(https://www.transtats.bts.gov/FieldInfo.asp?Svryq_Qr5p=b4vtv0%FDf6n6r%FDSVcf%FD%FLh.f.%FDSrqr4ny%FDV0s14zn6v10%FDc41pr55v0t%FDf6n0qn4q%FDP1qr5%FM&Svryq_gB2r=Pun4&Y11x72_gnoyr=Y_fgNgR_SVcf&gnoyr_VQ=GEE&flf_gnoyr_anzr=g_gEDDQ_fRTZRag_NYY_PNeeVRe&fB5_Svryq_anzr=beVTVa_fgNgR_SVcf)
+ORIGIN_STATE_NM: Origin State full name
+ORIGIN_WAC: Origin World Area Code (https://www.transtats.bts.gov/FieldInfo.asp?Svryq_Qr5p=b4vtv0%FDNv42146%FP%FDj14yq%FDN4rn%FDP1qr&Svryq_gB2r=a7z&Y11x72_gnoyr=Y_jbeYQ_NeRN_PbQRf&gnoyr_VQ=GEE&flf_gnoyr_anzr=g_gEDDQ_fRTZRag_NYY_PNeeVRe&fB5_Svryq_anzr=beVTVa_jNP)
+DEST_AIRPORT_ID
+DEST_AIRPORT_SEQ_ID
+*DEST_CITY_MARKET_ID
+*DEST
+*DEST_CITY_NAME
+DEST_STATE_ABR
+DEST_STATE_FIPS
+DEST_STATE_NM
+DEST_WAC
+*AIRCRAFT_GROUP:
+    0	Piston, 1-Engine/Combined Single Engine (Piston/Turbine)
+    1	Piston, 2-Engine
+    2	Piston, 3-Engine/4-Engine
+    3	Helicopter/Stol
+    4	Turbo-Prop, 1-Engine/2-Engine
+    5	Turbo-Prop, 4-Engine
+    6	Jet, 2-Engine
+    7	Jet, 3-Engine
+    8	Jet, 4-Engine/6-Engine
+*AIRCRAFT_TYPE: https://www.transtats.bts.gov/FieldInfo.asp?Svryq_Qr5p=Nv4p4ns6%FDgB2r&Svryq_gB2r=Pun4&Y11x72_gnoyr=Y_NVePeNSg_glcR&gnoyr_VQ=GEE&flf_gnoyr_anzr=g_gEDDQ_fRTZRag_NYY_PNeeVRe&fB5_Svryq_anzr=NVePeNSg_glcR
+AIRCRAFT_CONFIG: Filter to only look at passenger flights (1)
+*YEAR: Only looking at 2024
+QUARTER
+*MONTH: Jan-Apr
+*DISTANCE_GROUP:
+    1	Less Than 500 Miles
+    2	500-999 Miles
+    3	1000-1499 Miles
+    4	1500-1999 Miles
+    5	2000-2499 Miles
+    6	2500-2999 Miles
+    7	3000-3499 Miles
+    8	3500-3999 Miles
+    9	4000-4499 Miles
+    10	4500-4999 Miles
+    11	5000-5499 Miles
+    12	5500-5999 Miles
+    13	6000-6499 Miles
+    14	6500-6999 Miles
+    15	7000-7499 Miles
+    16	7500-7999 Miles
+    17	8000-8499 Miles
+    20	9500-9999 Miles
+*CLASS: may want to filter by this
+    F	Scheduled Passenger/ Cargo Service F
+    G	Scheduled All Cargo Service G
+    L	Non-Scheduled Civilian Passenger/ Cargo Service L
+    P	Non-Scheduled Civilian All Cargo Service P
