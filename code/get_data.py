@@ -59,6 +59,9 @@ def get_metro_pop():
     # Manually fix cities some city names
     pop_df.loc[pop_df['MainCity']=='Winston, NC','MainCity'] = 'Winston-Salem, NC'
     
+    # Convert the population to int
+    pop_df.loc[:,'Population'] = pop_df['Population'].str.replace(',','').astype(int)
+    
     return pop_df
 
 def get_geos(cities, logger, max_retries=3, overwrite=False):
@@ -489,6 +492,9 @@ def get_gdp():
     gdp_df.loc[gdp_df['MainCity']=='Poughkeepsie, NY', 'MainCity'] = 'Kiryas Joel, NY'
     gdp_df.loc[gdp_df['MainCity']=='California, MD', 'MainCity'] = 'Lexington Park, MD'
     gdp_df.loc[gdp_df['MainCity']=='The Villages, FL', 'MainCity'] = 'Wildwood, FL'
+    
+    # Convert GDP to numeric value
+    gdp_df['GDP_thousands_dollars'] = pd.to_numeric(gdp_df['GDP_thousands_dollars'], errors='coerce')
     
     return(gdp_df)
     
