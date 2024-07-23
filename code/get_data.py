@@ -442,6 +442,11 @@ def get_flight_data(iata_df):
     # Remove flights with no passengers
     msa_flight_df = msa_flight_df.loc[msa_flight_df['PASSENGERS']!=0]
     
+    # Add City_Pair based on MSA dataframe
+    origin_mc = msa_flight_df['ORIGIN'].apply(lambda x: iata_df.loc[iata_df['AirportCode'] == x, 'MainCity'].values[0])
+    dest_mc = msa_flight_df['DEST'].apply(lambda x: iata_df.loc[iata_df['AirportCode'] == x, 'MainCity'].values[0])
+    msa_flight_df['CityPair'] = [tuple(sorted(pair)) for pair in zip(origin_mc, dest_mc)]
+    
     # Save the DataFrame as a pickle file
     full_pickle = '../data/pickled/flights_df_all_fields.pickle'
     with open(full_pickle, 'wb') as file:
@@ -450,7 +455,7 @@ def get_flight_data(iata_df):
     filtered_df = msa_flight_df[['DEPARTURES_SCHEDULED','DEPARTURES_PERFORMED','SEATS','PASSENGERS','DISTANCE','RAMP_TO_RAMP',
                                   'AIR_TIME','UNIQUE_CARRIER','AIRLINE_ID','UNIQUE_CARRIER_NAME','REGION','CARRIER_GROUP_NEW',
                                   'ORIGIN','ORIGIN_CITY_NAME','ORIGIN_CITY_MARKET_ID','DEST','DEST_CITY_NAME','DEST_CITY_MARKET_ID',
-                                  'AIRCRAFT_GROUP','AIRCRAFT_TYPE','MONTH','YEAR','DISTANCE_GROUP','CLASS']]
+                                  'AIRCRAFT_GROUP','AIRCRAFT_TYPE','MONTH','YEAR','DISTANCE_GROUP','CLASS','CityPair']]
     # Save the DataFrame as a pickle file
     flight_pickle = '../data/pickled/flights_df.pickle'
     with open(flight_pickle, 'wb') as file:
