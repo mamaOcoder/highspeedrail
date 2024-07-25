@@ -52,12 +52,15 @@ def get_metro_pop():
     # For example, the DC metro area includes northern Virginia and parts of Maryland 
     #   (Washington-Arlington-Alexandria, DC-VA-MD-WV Metro Area) but we just take DC for our calculations
     
-    mainCity = pop_df['MetroArea'].str.split(',').str.get(0).str.split('-').str.get(0)
+    mainCity = pop_df['MetroArea'].str.split(',').str.get(0).str.split(r'[-/]').str.get(0)
     mainState = pop_df['MetroArea'].str.split(',').str.get(1).str.split('-').str.get(0)
     pop_df['MainCity'] = mainCity + ',' + mainState.str.rstrip()
     
     # Manually fix cities some city names
     pop_df.loc[pop_df['MainCity']=='Winston, NC','MainCity'] = 'Winston-Salem, NC'
+    pop_df.loc[pop_df['MainCity']=='Barnstable Town, MA','MainCity'] = 'Barnstable, MA'
+    pop_df.loc[pop_df['MainCity']=='Amherst Town, MA','MainCity'] = 'Amherst, MA'
+    pop_df.loc[pop_df['MainCity']=='Urban Honolulu, HI','MainCity'] = 'Honolulu, HI'
     
     # Convert the population to int
     pop_df.loc[:,'Population'] = pop_df['Population'].str.replace(',','').astype(int)
@@ -320,6 +323,10 @@ def get_city_distances(cities, overwrite=False, logger=None):
     # Clean the DataFrame to remove 'USA' from the city name
     dist_df.loc[:,'Origin'] = dist_df['Origin'].str.replace(', USA','')
     dist_df.loc[:,'Destination'] = dist_df['Destination'].str.replace(', USA','')
+    
+    # Clean the DataFrame to remove zipcode from the city name
+    dist_df.loc[:,'Origin'] = dist_df['Origin'].str.replace(r'\d+','', regex=True)
+    dist_df.loc[:,'Destination'] = dist_df['Destination'].str.replace(r'\d+','', regex=True)
     
     # Save distance in miles
     dist_df['Distance_miles'] = dist_df['Distance_meters'] * 0.000621371
