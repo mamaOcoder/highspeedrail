@@ -1,0 +1,16 @@
+Origin,Destination,Distance_meters,Duration
+Barcelona,Madrid,620,3h12m
+Madrid,Sevilla,530,2h35m
+Madrid,Valladolid,178,0h55m
+Madrid,Valencia,362,1h56m
+Beijing,Shanghai,1200,4h52m
+Shanghai,Hangzhou,174,1h6m
+Shanghai,Wuhan,800,5h0m
+Paris,Lille,346,1h10m
+Paris,Lyon,483,1h56m
+Paris,Bordeaux,292,2h17m
+Paris,Marseille,775,3h25m
+Tokyo,Osaka,515,2h27m
+Tokyo,Hiroshima,800,3h50m
+Tokyo,Nagano,350,1h28m
+Florence,Rome,230,1h30m
