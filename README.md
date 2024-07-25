@@ -10,4 +10,4 @@ The get_data.py file calls the Google Maps Distance Matrix API. This requires an
 - IATA codes: [Bureau of Transportation Statistics World Airport Codes List](https://www.bts.gov/topics/airlines-and-airports/world-airport-codes)
 - Flight Data:
     - Passenger Counts: [Bureau of Transportation Statistics Domestic Flights](https://www.transtats.bts.gov/TableInfo.asp?gnoyr_VQ=GEE&QO_fu146_anzr=Nv4%20Pn44vr45&V0s1_b0yB=D)
-    
+- GDP: [Bureau of Economic Analysis](https://www.bea.gov/data/gdp/gdp-county-metro-and-other-areas)
