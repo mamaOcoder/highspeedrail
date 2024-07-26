@@ -494,7 +494,7 @@ def get_gdp():
     
     # Rename DataFrame columns to prepare to merge with population
     gdp_df = gdp_df[['GeoName','2022']].rename(columns={'GeoName':'MetroArea', '2022':'GDP_thousands_dollars'})
-    mainCity = gdp_df['MetroArea'].str.split(',').str.get(0).str.split('-').str.get(0)
+    mainCity = gdp_df['MetroArea'].str.split(',').str.get(0).str.split(r'[-/]').str.get(0)
     mainState = gdp_df['MetroArea'].str.split(',').str.get(1).str.split('-').str.get(0)
     gdp_df['MainCity'] = mainCity + ',' + mainState.str.rstrip()
     
@@ -504,6 +504,8 @@ def get_gdp():
     gdp_df.loc[gdp_df['MainCity']=='Poughkeepsie, NY', 'MainCity'] = 'Kiryas Joel, NY'
     gdp_df.loc[gdp_df['MainCity']=='California, MD', 'MainCity'] = 'Lexington Park, MD'
     gdp_df.loc[gdp_df['MainCity']=='The Villages, FL', 'MainCity'] = 'Wildwood, FL'
+    gdp_df.loc[gdp_df['MainCity']=='Barnstable Town, MA', 'MainCity'] = 'Barnstable, MA'
+    gdp_df.loc[gdp_df['MainCity']=='Urban Honolulu, HI','MainCity'] = 'Honolulu, HI'
     
     # Convert GDP to numeric value
     gdp_df['GDP_thousands_dollars'] = pd.to_numeric(gdp_df['GDP_thousands_dollars'], errors='coerce')
