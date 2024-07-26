@@ -330,6 +330,9 @@ def get_city_distances(cities, overwrite=False, logger=None):
     
     # Save distance in miles
     dist_df['Distance_miles'] = dist_df['Distance_meters'] * 0.000621371
+    dist_df['Duration_minutes'] = round(dist_df['Duration_seconds'] / 60)
+    
+    dist_df = dist_df[['Origin','Destination','Distance_meters','Distance_miles','Duration_seconds','Duration_minutes']]
     
     # Save the DataFrame as a pickle file
     with open(dist_pickle, 'wb') as file:
