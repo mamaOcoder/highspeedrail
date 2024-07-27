@@ -340,7 +340,7 @@ def get_city_distances(cities, overwrite=False, logger=None):
     
     return dist_df  
  
-def get_airport_codes(pop_df):
+def get_airport_codes(msa_df):
     """
     Match airport IATA codes to metropolitan area.
     
@@ -348,7 +348,7 @@ def get_airport_codes(pop_df):
     and merges it with the MSAs.
 
     Args:
-        pop_df (pd.DataFrame): DataFrame with metropolitan statistical area (MSA) names and population.
+        msa_df (pd.DataFrame): DataFrame with metropolitan statistical area (MSA) names and population.
 
     Returns:
         pd.DataFrame: DataFrame with MSA and airport IATA codes.
@@ -360,7 +360,7 @@ def get_airport_codes(pop_df):
     
     iata_list = []
 
-    for i, row in pop_df.iterrows():
+    for i, row in msa_df.iterrows():
         maincity = row['MainCity']
         printinfo=False
         
@@ -534,6 +534,11 @@ def make_msa_df(pop_df, geo_df, gdp_df):
     
     msa_df = pd.merge(msa_df, gdp_df[['MainCity','GDP_thousands_dollars']], on='MainCity', how='left')
     
+    # The MetroArea values are the ones from the population data (2023). 
+    # Note that the GDP data was from 2022 and I found that there are
+    # a few new MSAs.
+    msa_df = msa_df.loc[msa_df['GDP_thousands_dollars'].notnull()]
+    
     # Save the DataFrame as a pickle file
     msa_pickle = '../data/pickled/msa_df.pickle'
     with open(msa_pickle, 'wb') as file:
@@ -567,12 +572,12 @@ def main():
     logger.info("Completed merging MSA data.")
     
     # Get distance and duration 
-    cities = pop_df['MainCity'].tolist()
+    cities = msa_df['MainCity'].tolist()
     dist_df = get_city_distances(cities, logger=logger)
     logger.info("Completed API calls to Google Maps Distance Matrix for distances.")
     
     # Get airport codes for metro areas
-    iata_df = get_airport_codes(pop_df)
+    iata_df = get_airport_codes(msa_df)
     logger.info("Completed processing airport IATA codes.")
     
     # Get flight info for metro areas
