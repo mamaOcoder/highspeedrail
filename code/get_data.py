@@ -546,7 +546,28 @@ def make_msa_df(pop_df, geo_df, gdp_df):
         
     return msa_df
     
+def get_tti():
+    header_names = ['AreaGroup', 'MetroArea', 'StateCode', 'PopulationGroup', 'Year', 'Population_thousands', 
+                'PopulationRank', 'AutoCommuters','FreewayDailyVehicle_miles_thousands','ArterialStreetDailyVehicle_miles_thousands',
+                'ValueOfTime','CommercialValueOfTime','AverageStateGasCost','AverageStateDieselCost','CongestedTravel',
+                'CongestedSystem','NumberOfRushHours','TotalGallons_thousands','TotalGallonsRank','GallonsPerAutoCommuter',
+                'GallonsPerAutoCommuterRank','TotalDelay','TotalDelayRank','DelayPerAutoCommuter','DelayPerAutoCommuterRank',
+                'TravelTimeIndexValue','TravelTimeIndexRank','CommuterStressIndexValue','CommuterStressIndexRank',
+                'FreewayPlanningTimeIndexValue','FreewayPlanningTimeIndexRank','AnnualCongestionCostTotalDollars_millions',
+                'AnnualCongestionCostRank','AnnualCongestionCostPerAutoCommuter','AnnualCongestionCostPerAutoCommuterRank',
+                'TruckTotalDelay_thousands','TruckTotalDelayRank','TruckTotalGallons','TruckTotalGallonsRank','TruckAnnualCost_millions',
+                'TruckAnnualCostRank','AnnualCO2ExcessDueCongestion_tons','AnnualCO2ExcessDueCongestionRank',
+                'AnnualCO2ExcessDueAllTravel_tons','AnnualCO2ExcessDueAllTravelRank','AnnualCO2ExcessTruckCongestion_tons',
+                'AnnualCO2ExcessTruckCongestionRank','AnnualCO2ExcessTruckTravel_tons','AnnualCO2ExcessTruckTravelRank',
+                'PopulationRankAll','WastedFuelRank','WastedFuelPerCommuterRank','AnnualDelayRank','DelayPerCommuterRank',
+                'TravelTimeIndexRankAll','AnnualCongCostRank','CostPerCommuterRank','AnnualTruckDelayRank','WastedFuelTrucksRank',
+                'TruckCongCostRank']
+    tti_df = pd.read_excel('../data/complete-data-2023-umr-by-tti.xlsx',skiprows=4, names=header_names)
     
+     # Save the DataFrame as a pickle file
+    tti_pickle = '../data/pickled/tti_df.pickle'
+    with open(tti_pickle, 'wb') as file:
+        pickle.dump(tti_df, file)
     
 def main():
     """Main function to compile data."""
@@ -583,6 +604,10 @@ def main():
     # Get flight info for metro areas
     flights_df = get_flight_data(iata_df)
     logger.info("Completed processing flight data.")
+    
+    # Get TTI data
+    get_tti()
+    logger.info("Completed processing tti data.")
     
 
 if __name__ == "__main__":
