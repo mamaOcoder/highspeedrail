@@ -457,6 +457,9 @@ def get_flight_data(iata_df):
     dest_mc = msa_flight_df['DEST'].apply(lambda x: iata_df.loc[iata_df['AirportCode'] == x, 'MainCity'].values[0])
     msa_flight_df['CityPair'] = [tuple(sorted(pair)) for pair in zip(origin_mc, dest_mc)]
     
+    # Not interested in flights within an MSA
+    msa_flight_df = msa_flight_df.loc[msa_flight_df['CityPair'].apply(lambda x: x[0]==x[1])==False].reset_index(drop=True)
+    
     # Save the DataFrame as a pickle file
     full_pickle = '../data/pickled/flights_df_all_fields.pickle'
     with open(full_pickle, 'wb') as file:
