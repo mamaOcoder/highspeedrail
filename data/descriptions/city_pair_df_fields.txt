@@ -1,0 +1,13 @@
+City1
+City2
+drive_distance - Google Maps API avg distance (miles)
+drive_duration - Google Maps API avg duration (minutes)
+flight_distance - average distance (miles)
+flight_duration_ramp - average duration (minutes) ramp_to_ramp
+flight_duration_air - average duration (minutes) in the air
+flight_duration_total - average duration (minutes) ramp_to_ramp plus 200 min time penalty
+num_passengers - cumulative number of passengers that traveled during the 4 months
+total_seats - cumulative number of seats available on flights
+flight_frequency - cumulative number of flights during the 4 months
+scheduled - cumulative number of flights scheduled
+num_carriers - cumulative number of airlines operating between cities
