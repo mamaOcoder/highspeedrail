@@ -46,7 +46,7 @@ def get_metro_pop():
     pop_df = pop_df[~pop_df['MetroArea'].str.endswith('Division')].reset_index(drop=True)
 
     # Remove "Metro Area" from the city
-    pop_df.loc[:,'MetroArea'] = pop_df['MetroArea'].str.replace(r'Metro Area', '')
+    pop_df.loc[:,'MetroArea'] = pop_df['MetroArea'].str.replace(r'Metro Area', '').str.rstrip()
 
     # Grab the "main" city from the metro area for using for coordinates (listed first)
     # For example, the DC metro area includes northern Virginia and parts of Maryland 
@@ -455,6 +455,8 @@ def get_flight_data(iata_df):
     # Add City_Pair based on MSA dataframe
     origin_mc = msa_flight_df['ORIGIN'].apply(lambda x: iata_df.loc[iata_df['AirportCode'] == x, 'MainCity'].values[0])
     dest_mc = msa_flight_df['DEST'].apply(lambda x: iata_df.loc[iata_df['AirportCode'] == x, 'MainCity'].values[0])
+    msa_flight_df['OriginMSA'] = origin_mc
+    msa_flight_df['DestMSA'] = dest_mc
     msa_flight_df['CityPair'] = [tuple(sorted(pair)) for pair in zip(origin_mc, dest_mc)]
     
     # Not interested in flights within an MSA
@@ -518,7 +520,7 @@ def get_gdp():
     
     return(gdp_df)
     
-def make_msa_df(pop_df, geo_df, gdp_df):
+def make_msa_df(pop_df, geo_df, gdp_df, tti_df):
     """
     Combine data for overall information for MSAs
     
@@ -526,8 +528,9 @@ def make_msa_df(pop_df, geo_df, gdp_df):
 
     Args:
         pop_df (pd.DataFrame): DataFrame with metropolitan statistical area (MSA) names and population.
-        geo_df (pd.DataFrame): DataFrame with metropolitan statistical area (MSA) names and population.
-        gdp_df (pd.DataFrame): DataFrame with metropolitan statistical area (MSA) names and population.
+        geo_df (pd.DataFrame): DataFrame with metropolitan statistical area (MSA) names and geo-coords.
+        gdp_df (pd.DataFrame): DataFrame with metropolitan statistical area (MSA) names and GDP.
+        tti_df (pd.DataFrame): DataFrame with metropolitan statistical area (MSA) names and TTI data.
 
     Returns:
         pd.DataFrame: DataFrame with all MSA data.
@@ -536,6 +539,9 @@ def make_msa_df(pop_df, geo_df, gdp_df):
     msa_df = pd.merge(pop_df, geo_df, on='MainCity', how='left')
     
     msa_df = pd.merge(msa_df, gdp_df[['MainCity','GDP_thousands_dollars']], on='MainCity', how='left')
+    
+    msa_df = pd.merge(msa_df, tti_df[['MSAmatch','TravelTimeIndexValue']], left_on='MainCity', right_on='MSAmatch', how='left')
+    msa_df.drop(columns=['MSAmatch'], inplace=True)
     
     # The MetroArea values are the ones from the population data (2023). 
     # Note that the GDP data was from 2022 and I found that there are
@@ -549,7 +555,7 @@ def make_msa_df(pop_df, geo_df, gdp_df):
         
     return msa_df
     
-def get_tti():
+def get_tti(pop_df):
     header_names = ['AreaGroup', 'MetroArea', 'StateCode', 'PopulationGroup', 'Year', 'Population_thousands', 
                 'PopulationRank', 'AutoCommuters','FreewayDailyVehicle_miles_thousands','ArterialStreetDailyVehicle_miles_thousands',
                 'ValueOfTime','CommercialValueOfTime','AverageStateGasCost','AverageStateDieselCost','CongestedTravel',
@@ -567,10 +573,49 @@ def get_tti():
                 'TruckCongCostRank']
     tti_df = pd.read_excel('../data/complete-data-2023-umr-by-tti.xlsx',skiprows=4, names=header_names)
     
+    tti_map = {}
+    for i, row in pop_df.iterrows():
+        found = False
+        maincity = row['MainCity']
+        
+        states = re.split(r'[\-/]', row['MetroArea'].split(',')[-1].strip())
+        cities = re.split(r'[\-/]', row['MetroArea'].split(',')[0].strip())
+
+        for city, state in [(c, s) for c in cities for s in states if c!='']:
+            cm = tti_df.loc[(tti_df['MetroArea'].str.contains(city)) & (tti_df['MetroArea'].str.contains(state))]
+            if len(cm)>0:
+                found=True
+                tti_map[cm['MetroArea'].tolist()[0]] = maincity
+                break
+                
+
+        if not found:
+            for ma in list(set(tti_df['MetroArea'].tolist())):
+                last_space_index = ma.rfind(' ')
+                itt_city = re.split(r'[\-/]', ma[:last_space_index])
+                itt_state = re.split(r'[\-/]', ma[last_space_index + 1:])
+                
+                for city, state in [(c, s) for c in itt_city for s in itt_state if c!='']:
+                    cm = (city in row['MetroArea']) & (state in row['MetroArea'])
+                    if cm:
+                        found=True
+                        tti_map[ma] = maincity
+                        break
+                if found:
+                    break
+        # if not found:
+        #     print(maincity)
+        
+    tti_df['MSAmatch'] = tti_df['MetroArea'].map(tti_map)
+    
+    tti_df = tti_df.loc[tti_df['Year']==2022]
+    
      # Save the DataFrame as a pickle file
     tti_pickle = '../data/pickled/tti_df.pickle'
     with open(tti_pickle, 'wb') as file:
         pickle.dump(tti_df, file)
+        
+    return tti_df
     
 def main():
     """Main function to compile data."""
@@ -591,8 +636,12 @@ def main():
     geo_df = get_geos(cities, logger=logger)
     logger.info("Completed API calls to Google Maps Geocoder for coordinates.")
     
-    # Combine pop_df, geo_df and gdp_df make a single msa_df file
-    msa_df = make_msa_df(pop_df,geo_df,gdp_df)
+    # Get TTI data
+    tti_df = get_tti(pop_df)
+    logger.info("Completed processing tti data.")
+    
+    # Combine pop_df, geo_df and gdp_df and tti_dfmake a single msa_df file
+    msa_df = make_msa_df(pop_df,geo_df,gdp_df,tti_df)
     logger.info("Completed merging MSA data.")
     
     # Get distance and duration 
@@ -608,9 +657,7 @@ def main():
     flights_df = get_flight_data(iata_df)
     logger.info("Completed processing flight data.")
     
-    # Get TTI data
-    get_tti()
-    logger.info("Completed processing tti data.")
+    
     
 
 if __name__ == "__main__":
