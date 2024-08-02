@@ -501,7 +501,7 @@ def get_gdp():
     gdp_df = gdp_df.loc[gdp_df['LineCode']==1]
     
     # Rename DataFrame columns to prepare to merge with population
-    gdp_df = gdp_df[['GeoName','2022']].rename(columns={'GeoName':'MetroArea', '2022':'GDP_thousands_dollars'})
+    gdp_df = gdp_df[['GeoName','2022']].rename(columns={'GeoName':'MetroArea', '2022':'GDP'})
     mainCity = gdp_df['MetroArea'].str.split(',').str.get(0).str.split(r'[-/]').str.get(0)
     mainState = gdp_df['MetroArea'].str.split(',').str.get(1).str.split('-').str.get(0)
     gdp_df['MainCity'] = mainCity + ',' + mainState.str.rstrip()
@@ -516,7 +516,8 @@ def get_gdp():
     gdp_df.loc[gdp_df['MainCity']=='Urban Honolulu, HI','MainCity'] = 'Honolulu, HI'
     
     # Convert GDP to numeric value
-    gdp_df['GDP_thousands_dollars'] = pd.to_numeric(gdp_df['GDP_thousands_dollars'], errors='coerce')
+    gdp_df['GDP'] = pd.to_numeric(gdp_df['GDP'], errors='coerce')
+    gdp_df['GDP'] = gdp_df['GDP']*1000
     
     return(gdp_df)
     
@@ -538,7 +539,7 @@ def make_msa_df(pop_df, geo_df, gdp_df, tti_df):
     
     msa_df = pd.merge(pop_df, geo_df, on='MainCity', how='left')
     
-    msa_df = pd.merge(msa_df, gdp_df[['MainCity','GDP_thousands_dollars']], on='MainCity', how='left')
+    msa_df = pd.merge(msa_df, gdp_df[['MainCity','GDP']], on='MainCity', how='left')
     
     msa_df = pd.merge(msa_df, tti_df[['MSAmatch','TravelTimeIndexValue']], left_on='MainCity', right_on='MSAmatch', how='left')
     msa_df.drop(columns=['MSAmatch'], inplace=True)
@@ -546,7 +547,7 @@ def make_msa_df(pop_df, geo_df, gdp_df, tti_df):
     # The MetroArea values are the ones from the population data (2023). 
     # Note that the GDP data was from 2022 and I found that there are
     # a few new MSAs.
-    msa_df = msa_df.loc[msa_df['GDP_thousands_dollars'].notnull()]
+    msa_df = msa_df.loc[msa_df['GDP'].notnull()]
     
     # Save the DataFrame as a pickle file
     msa_pickle = '../data/pickled/msa_df.pickle'
