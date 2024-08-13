@@ -7995,7 +7995,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [67]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [106]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Define weights</span>
@@ -8008,8 +8008,8 @@ a.anchor-link {
 
 <span class="c1"># Relationship contributions</span>
 <span class="n">dist_weight</span> <span class="o">=</span> <span class="mf">0.4</span> 
-<span class="n">efficiency_weight</span> <span class="o">=</span> <span class="mf">0.2</span>
-<span class="n">cp_demand_weight</span> <span class="o">=</span> <span class="mf">0.4</span>
+<span class="n">efficiency_weight</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">cp_demand_weight</span> <span class="o">=</span> <span class="mf">0.5</span>
 
 <span class="c1"># Use cluster as a boost</span>
 <span class="n">cluster_weight</span> <span class="o">=</span> <span class="mf">0.15</span>
@@ -8041,7 +8041,7 @@ a.anchor-link {
 
 <span class="c1"># Calculate total and normalized scores</span>
 <span class="n">city_pairs</span><span class="p">[</span><span class="s1">'Total_Score'</span><span class="p">]</span> <span class="o">=</span> <span class="n">city_pairs</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">calculate_score</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="c1"># city_pairs['Normalized_Score'] = (city_pairs['Total_Score'] / city_pairs['Total_Score'].max())</span>
+<span class="c1">#city_pairs['Normalized_Score'] = (city_pairs['Total_Score'] / city_pairs['Total_Score'].max())</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">city_pairs</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">'Total_Score'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">results</span><span class="p">[[</span><span class="s1">'City1'</span><span class="p">,</span><span class="s1">'City2'</span><span class="p">,</span><span class="s1">'drive_distance'</span><span class="p">,</span><span class="s1">'PopNorm'</span><span class="p">,</span><span class="s1">'PopNorm_City2'</span><span class="p">,</span><span class="s1">'GDPNorm'</span><span class="p">,</span><span class="s1">'GDPNorm_City2'</span><span class="p">,</span><span class="s1">'TTINorm'</span><span class="p">,</span><span class="s1">'TTINorm_City2'</span><span class="p">,</span><span class="s1">'demand_score_norm'</span><span class="p">,</span><span class="s1">'demand_score_norm_City2'</span><span class="p">,</span><span class="s1">'proximity_score'</span><span class="p">,</span><span class="s1">'proximity_score_City2'</span><span class="p">,</span><span class="s1">'gaus_dist_weight'</span><span class="p">,</span><span class="s1">'efficiency_score_norm'</span><span class="p">,</span><span class="s1">'demand_weight'</span><span class="p">,</span><span class="s1">'cluster_id'</span><span class="p">,</span><span class="s1">'cluster_id_City2'</span><span class="p">,</span><span class="s1">'Total_Score'</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
 </pre></div>
@@ -8054,7 +8054,7 @@ a.anchor-link {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[67]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[106]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -8116,7 +8116,7 @@ a.anchor-link {
 <td>1.000000</td>
 <td>4.0</td>
 <td>1.0</td>
-<td>0.639730</td>
+<td>0.652469</td>
 </tr>
 <tr>
 <th>14632</th>
@@ -8138,29 +8138,7 @@ a.anchor-link {
 <td>0.279927</td>
 <td>1.0</td>
 <td>1.0</td>
-<td>0.623355</td>
-</tr>
-<tr>
-<th>60973</th>
-<td>New York, NY</td>
-<td>Washington, DC</td>
-<td>226.807871</td>
-<td>1.0</td>
-<td>0.321341</td>
-<td>1.000000</td>
-<td>0.304358</td>
-<td>0.608696</td>
-<td>0.456522</td>
-<td>1.000000</td>
-<td>0.477669</td>
-<td>0.628190</td>
-<td>0.709058</td>
-<td>8.659782e-03</td>
-<td>0.602993</td>
-<td>0.200080</td>
-<td>1.0</td>
-<td>1.0</td>
-<td>0.590763</td>
+<td>0.587351</td>
 </tr>
 <tr>
 <th>6389</th>
@@ -8182,51 +8160,29 @@ a.anchor-link {
 <td>0.491214</td>
 <td>4.0</td>
 <td>4.0</td>
-<td>0.583663</td>
+<td>0.572455</td>
 </tr>
 <tr>
-<th>52920</th>
-<td>Las Vegas, NV</td>
-<td>Los Angeles, CA</td>
-<td>270.797521</td>
-<td>0.117207</td>
-<td>0.655397</td>
-<td>0.072923</td>
-<td>0.566786</td>
-<td>0.391304</td>
+<th>60973</th>
+<td>New York, NY</td>
+<td>Washington, DC</td>
+<td>226.807871</td>
+<td>1.0</td>
+<td>0.321341</td>
 <td>1.000000</td>
-<td>0.518789</td>
-<td>0.532577</td>
-<td>0.317168</td>
-<td>0.338033</td>
-<td>2.707235e-01</td>
-<td>0.925459</td>
-<td>0.265186</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>0.579578</td>
-</tr>
-<tr>
-<th>55441</th>
-<td>Los Angeles, CA</td>
-<td>San Francisco, CA</td>
-<td>382.824809</td>
-<td>0.655397</td>
-<td>0.231938</td>
-<td>0.566786</td>
-<td>0.336061</td>
+<td>0.304358</td>
+<td>0.608696</td>
+<td>0.456522</td>
 <td>1.000000</td>
-<td>0.956522</td>
-<td>0.532577</td>
-<td>0.393646</td>
-<td>0.338033</td>
-<td>0.416524</td>
-<td>1.548366e-01</td>
-<td>0.746769</td>
-<td>0.323964</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>0.573665</td>
+<td>0.477669</td>
+<td>0.628190</td>
+<td>0.709058</td>
+<td>8.659782e-03</td>
+<td>0.602993</td>
+<td>0.200080</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0.570617</td>
 </tr>
 <tr>
 <th>60887</th>
@@ -8248,29 +8204,29 @@ a.anchor-link {
 <td>0.038204</td>
 <td>1.0</td>
 <td>1.0</td>
-<td>0.567762</td>
+<td>0.565233</td>
 </tr>
 <tr>
-<th>27253</th>
-<td>Dallas, TX</td>
-<td>Houston, TX</td>
-<td>239.181232</td>
-<td>0.413679</td>
-<td>0.38334</td>
-<td>0.317461</td>
-<td>0.291654</td>
-<td>0.413043</td>
-<td>0.500000</td>
-<td>0.924658</td>
-<td>0.525773</td>
-<td>0.496738</td>
-<td>0.447342</td>
-<td>3.407368e-02</td>
-<td>0.871963</td>
-<td>0.252245</td>
-<td>3.0</td>
-<td>3.0</td>
-<td>0.552561</td>
+<th>55441</th>
+<td>Los Angeles, CA</td>
+<td>San Francisco, CA</td>
+<td>382.824809</td>
+<td>0.655397</td>
+<td>0.231938</td>
+<td>0.566786</td>
+<td>0.336061</td>
+<td>1.000000</td>
+<td>0.956522</td>
+<td>0.532577</td>
+<td>0.393646</td>
+<td>0.338033</td>
+<td>0.416524</td>
+<td>1.548366e-01</td>
+<td>0.746769</td>
+<td>0.323964</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.552525</td>
 </tr>
 <tr>
 <th>17566</th>
@@ -8292,7 +8248,29 @@ a.anchor-link {
 <td>0.037963</td>
 <td>1.0</td>
 <td>1.0</td>
-<td>0.551615</td>
+<td>0.548907</td>
+</tr>
+<tr>
+<th>52920</th>
+<td>Las Vegas, NV</td>
+<td>Los Angeles, CA</td>
+<td>270.797521</td>
+<td>0.117207</td>
+<td>0.655397</td>
+<td>0.072923</td>
+<td>0.566786</td>
+<td>0.391304</td>
+<td>1.000000</td>
+<td>0.518789</td>
+<td>0.532577</td>
+<td>0.317168</td>
+<td>0.338033</td>
+<td>2.707235e-01</td>
+<td>0.925459</td>
+<td>0.265186</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.546564</td>
 </tr>
 <tr>
 <th>60900</th>
@@ -8314,7 +8292,7 @@ a.anchor-link {
 <td>0.054166</td>
 <td>1.0</td>
 <td>1.0</td>
-<td>0.542665</td>
+<td>0.540415</td>
 </tr>
 <tr>
 <th>16921</th>
@@ -8336,7 +8314,7 @@ a.anchor-link {
 <td>0.079574</td>
 <td>1.0</td>
 <td>1.0</td>
-<td>0.533349</td>
+<td>0.529744</td>
 </tr>
 <tr>
 <th>21352</th>
@@ -8358,7 +8336,29 @@ a.anchor-link {
 <td>0.018027</td>
 <td>1.0</td>
 <td>1.0</td>
-<td>0.529307</td>
+<td>0.528701</td>
+</tr>
+<tr>
+<th>27253</th>
+<td>Dallas, TX</td>
+<td>Houston, TX</td>
+<td>239.181232</td>
+<td>0.413679</td>
+<td>0.38334</td>
+<td>0.317461</td>
+<td>0.291654</td>
+<td>0.413043</td>
+<td>0.500000</td>
+<td>0.924658</td>
+<td>0.525773</td>
+<td>0.496738</td>
+<td>0.447342</td>
+<td>3.407368e-02</td>
+<td>0.871963</td>
+<td>0.252245</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>0.521576</td>
 </tr>
 <tr>
 <th>22240</th>
@@ -8380,29 +8380,7 @@ a.anchor-link {
 <td>0.047627</td>
 <td>2.0</td>
 <td>2.0</td>
-<td>0.523147</td>
-</tr>
-<tr>
-<th>60968</th>
-<td>New York, NY</td>
-<td>Virginia Beach, VA</td>
-<td>365.561880</td>
-<td>1.0</td>
-<td>0.088946</td>
-<td>1.000000</td>
-<td>0.052533</td>
-<td>0.608696</td>
-<td>0.217391</td>
-<td>1.000000</td>
-<td>0.051403</td>
-<td>0.628190</td>
-<td>0.531726</td>
-<td>4.557591e-01</td>
-<td>0.091752</td>
-<td>0.050754</td>
-<td>1.0</td>
-<td>1.0</td>
-<td>0.520568</td>
+<td>0.519867</td>
 </tr>
 <tr>
 <th>48541</th>
@@ -8427,6 +8405,28 @@ a.anchor-link {
 <td>0.519308</td>
 </tr>
 <tr>
+<th>60968</th>
+<td>New York, NY</td>
+<td>Virginia Beach, VA</td>
+<td>365.561880</td>
+<td>1.0</td>
+<td>0.088946</td>
+<td>1.000000</td>
+<td>0.052533</td>
+<td>0.608696</td>
+<td>0.217391</td>
+<td>1.000000</td>
+<td>0.051403</td>
+<td>0.628190</td>
+<td>0.531726</td>
+<td>4.557591e-01</td>
+<td>0.091752</td>
+<td>0.050754</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0.518518</td>
+</tr>
+<tr>
 <th>22276</th>
 <td>Chicago, IL</td>
 <td>New York, NY</td>
@@ -8446,95 +8446,7 @@ a.anchor-link {
 <td>0.396202</td>
 <td>2.0</td>
 <td>1.0</td>
-<td>0.517264</td>
-</tr>
-<tr>
-<th>52977</th>
-<td>Las Vegas, NV</td>
-<td>Phoenix, AZ</td>
-<td>301.059531</td>
-<td>0.117207</td>
-<td>0.25782</td>
-<td>0.072923</td>
-<td>0.166145</td>
-<td>0.391304</td>
-<td>0.391304</td>
-<td>0.518789</td>
-<td>0.536287</td>
-<td>0.317168</td>
-<td>0.318888</td>
-<td>5.994001e-01</td>
-<td>0.494320</td>
-<td>0.162008</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>0.516867</td>
-</tr>
-<tr>
-<th>60883</th>
-<td>New York, NY</td>
-<td>Pittsburgh, PA</td>
-<td>370.293309</td>
-<td>1.0</td>
-<td>0.121639</td>
-<td>1.000000</td>
-<td>0.082533</td>
-<td>0.608696</td>
-<td>0.260870</td>
-<td>1.000000</td>
-<td>0.105402</td>
-<td>0.628190</td>
-<td>0.717451</td>
-<td>2.799801e-01</td>
-<td>0.170619</td>
-<td>0.098507</td>
-<td>1.0</td>
-<td>1.0</td>
-<td>0.513288</td>
-</tr>
-<tr>
-<th>14651</th>
-<td>Boston, MA</td>
-<td>Philadelphia, PA</td>
-<td>307.670297</td>
-<td>0.250056</td>
-<td>0.318316</td>
-<td>0.263173</td>
-<td>0.238552</td>
-<td>0.391304</td>
-<td>0.413043</td>
-<td>0.351059</td>
-<td>0.264766</td>
-<td>0.512763</td>
-<td>0.702065</td>
-<td>8.481544e-01</td>
-<td>0.248648</td>
-<td>0.094623</td>
-<td>1.0</td>
-<td>1.0</td>
-<td>0.512826</td>
-</tr>
-<tr>
-<th>27301</th>
-<td>Dallas, TX</td>
-<td>Little Rock, AR</td>
-<td>319.005036</td>
-<td>0.413679</td>
-<td>0.036317</td>
-<td>0.317461</td>
-<td>0.020420</td>
-<td>0.413043</td>
-<td>0.239130</td>
-<td>0.924658</td>
-<td>0.028400</td>
-<td>0.496738</td>
-<td>0.546893</td>
-<td>8.741829e-01</td>
-<td>0.136744</td>
-<td>0.057796</td>
-<td>3.0</td>
-<td>3.0</td>
-<td>0.512324</td>
+<td>0.515339</td>
 </tr>
 <tr>
 <th>53847</th>
@@ -8559,26 +8471,70 @@ a.anchor-link {
 <td>0.510243</td>
 </tr>
 <tr>
-<th>55442</th>
-<td>Los Angeles, CA</td>
-<td>San Jose, CA</td>
-<td>340.446064</td>
-<td>0.655397</td>
-<td>0.097104</td>
-<td>0.566786</td>
-<td>0.185324</td>
+<th>60883</th>
+<td>New York, NY</td>
+<td>Pittsburgh, PA</td>
+<td>370.293309</td>
+<td>1.0</td>
+<td>0.121639</td>
 <td>1.000000</td>
-<td>0.673913</td>
-<td>0.532577</td>
-<td>0.099002</td>
-<td>0.338033</td>
-<td>0.409367</td>
-<td>5.676338e-01</td>
-<td>0.257981</td>
-<td>0.108803</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>0.510134</td>
+<td>0.082533</td>
+<td>0.608696</td>
+<td>0.260870</td>
+<td>1.000000</td>
+<td>0.105402</td>
+<td>0.628190</td>
+<td>0.717451</td>
+<td>2.799801e-01</td>
+<td>0.170619</td>
+<td>0.098507</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0.509683</td>
+</tr>
+<tr>
+<th>27301</th>
+<td>Dallas, TX</td>
+<td>Little Rock, AR</td>
+<td>319.005036</td>
+<td>0.413679</td>
+<td>0.036317</td>
+<td>0.317461</td>
+<td>0.020420</td>
+<td>0.413043</td>
+<td>0.239130</td>
+<td>0.924658</td>
+<td>0.028400</td>
+<td>0.496738</td>
+<td>0.546893</td>
+<td>8.741829e-01</td>
+<td>0.136744</td>
+<td>0.057796</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>0.508377</td>
+</tr>
+<tr>
+<th>14651</th>
+<td>Boston, MA</td>
+<td>Philadelphia, PA</td>
+<td>307.670297</td>
+<td>0.250056</td>
+<td>0.318316</td>
+<td>0.263173</td>
+<td>0.238552</td>
+<td>0.391304</td>
+<td>0.413043</td>
+<td>0.351059</td>
+<td>0.264766</td>
+<td>0.512763</td>
+<td>0.702065</td>
+<td>8.481544e-01</td>
+<td>0.248648</td>
+<td>0.094623</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0.505124</td>
 </tr>
 <tr>
 <th>43369</th>
@@ -8603,48 +8559,48 @@ a.anchor-link {
 <td>0.504265</td>
 </tr>
 <tr>
-<th>22359</th>
-<td>Chicago, IL</td>
-<td>St. Louis, MO</td>
-<td>296.904423</td>
-<td>0.473492</td>
-<td>0.140892</td>
-<td>0.384115</td>
-<td>0.095704</td>
-<td>0.565217</td>
-<td>0.217391</td>
-<td>0.854878</td>
-<td>0.163395</td>
-<td>0.717343</td>
-<td>0.623219</td>
-<td>6.084856e-01</td>
-<td>0.223228</td>
-<td>0.086704</td>
-<td>2.0</td>
-<td>2.0</td>
-<td>0.502823</td>
+<th>55442</th>
+<td>Los Angeles, CA</td>
+<td>San Jose, CA</td>
+<td>340.446064</td>
+<td>0.655397</td>
+<td>0.097104</td>
+<td>0.566786</td>
+<td>0.185324</td>
+<td>1.000000</td>
+<td>0.673913</td>
+<td>0.532577</td>
+<td>0.099002</td>
+<td>0.338033</td>
+<td>0.409367</td>
+<td>5.676338e-01</td>
+<td>0.257981</td>
+<td>0.108803</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.502676</td>
 </tr>
 <tr>
-<th>22126</th>
-<td>Chicago, IL</td>
-<td>Detroit, MI</td>
-<td>282.692426</td>
-<td>0.473492</td>
-<td>0.220382</td>
-<td>0.384115</td>
-<td>0.139906</td>
-<td>0.565217</td>
-<td>0.347826</td>
-<td>0.854878</td>
-<td>0.304198</td>
-<td>0.717343</td>
-<td>0.689263</td>
-<td>4.079782e-01</td>
-<td>0.293056</td>
-<td>0.110299</td>
-<td>2.0</td>
-<td>2.0</td>
-<td>0.499936</td>
+<th>52977</th>
+<td>Las Vegas, NV</td>
+<td>Phoenix, AZ</td>
+<td>301.059531</td>
+<td>0.117207</td>
+<td>0.25782</td>
+<td>0.072923</td>
+<td>0.166145</td>
+<td>0.391304</td>
+<td>0.391304</td>
+<td>0.518789</td>
+<td>0.536287</td>
+<td>0.317168</td>
+<td>0.318888</td>
+<td>5.994001e-01</td>
+<td>0.494320</td>
+<td>0.162008</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.500251</td>
 </tr>
 <tr>
 <th>55371</th>
@@ -8669,6 +8625,28 @@ a.anchor-link {
 <td>0.498517</td>
 </tr>
 <tr>
+<th>22359</th>
+<td>Chicago, IL</td>
+<td>St. Louis, MO</td>
+<td>296.904423</td>
+<td>0.473492</td>
+<td>0.140892</td>
+<td>0.384115</td>
+<td>0.095704</td>
+<td>0.565217</td>
+<td>0.217391</td>
+<td>0.854878</td>
+<td>0.163395</td>
+<td>0.717343</td>
+<td>0.623219</td>
+<td>6.084856e-01</td>
+<td>0.223228</td>
+<td>0.086704</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>0.495997</td>
+</tr>
+<tr>
 <th>6412</th>
 <td>Atlanta, GA</td>
 <td>New York, NY</td>
@@ -8688,7 +8666,7 @@ a.anchor-link {
 <td>0.370826</td>
 <td>4.0</td>
 <td>1.0</td>
-<td>0.493074</td>
+<td>0.491715</td>
 </tr>
 <tr>
 <th>2292</th>
@@ -8710,29 +8688,51 @@ a.anchor-link {
 <td>0.012614</td>
 <td>3.0</td>
 <td>3.0</td>
-<td>0.491341</td>
+<td>0.490825</td>
 </tr>
 <tr>
-<th>22101</th>
+<th>22126</th>
 <td>Chicago, IL</td>
-<td>Cincinnati, OH</td>
-<td>295.575311</td>
+<td>Detroit, MI</td>
+<td>282.692426</td>
 <td>0.473492</td>
-<td>0.113859</td>
+<td>0.220382</td>
 <td>0.384115</td>
-<td>0.084688</td>
+<td>0.139906</td>
 <td>0.565217</td>
-<td>0.239130</td>
+<td>0.347826</td>
 <td>0.854878</td>
-<td>0.098912</td>
+<td>0.304198</td>
 <td>0.717343</td>
-<td>0.729693</td>
-<td>6.411288e-01</td>
-<td>0.161028</td>
-<td>0.063352</td>
+<td>0.689263</td>
+<td>4.079782e-01</td>
+<td>0.293056</td>
+<td>0.110299</td>
 <td>2.0</td>
 <td>2.0</td>
-<td>0.489978</td>
+<td>0.490798</td>
+</tr>
+<tr>
+<th>55386</th>
+<td>Los Angeles, CA</td>
+<td>New York, NY</td>
+<td>2789.931246</td>
+<td>0.655397</td>
+<td>1.0</td>
+<td>0.566786</td>
+<td>1.000000</td>
+<td>1.000000</td>
+<td>0.608696</td>
+<td>0.532577</td>
+<td>1.000000</td>
+<td>0.338033</td>
+<td>0.628190</td>
+<td>0.000000e+00</td>
+<td>0.119637</td>
+<td>0.349306</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.489278</td>
 </tr>
 <tr>
 <th>27328</th>
@@ -8754,73 +8754,29 @@ a.anchor-link {
 <td>0.013335</td>
 <td>3.0</td>
 <td>3.0</td>
-<td>0.489561</td>
+<td>0.488842</td>
 </tr>
 <tr>
-<th>27395</th>
-<td>Dallas, TX</td>
-<td>San Antonio, TX</td>
-<td>273.561068</td>
-<td>0.413679</td>
-<td>0.136108</td>
-<td>0.317461</td>
-<td>0.074003</td>
-<td>0.413043</td>
-<td>0.369565</td>
-<td>0.924658</td>
-<td>0.111182</td>
-<td>0.496738</td>
-<td>0.406717</td>
-<td>3.376247e-01</td>
-<td>0.514038</td>
-<td>0.151342</td>
-<td>3.0</td>
-<td>3.0</td>
-<td>0.483154</td>
-</tr>
-<tr>
-<th>60881</th>
-<td>New York, NY</td>
-<td>Philadelphia, PA</td>
-<td>95.577423</td>
-<td>1.0</td>
-<td>0.318316</td>
-<td>1.000000</td>
-<td>0.238552</td>
-<td>0.608696</td>
-<td>0.413043</td>
-<td>1.000000</td>
-<td>0.264766</td>
-<td>0.628190</td>
-<td>0.702065</td>
-<td>1.685886e-15</td>
-<td>0.154709</td>
-<td>0.021388</td>
-<td>1.0</td>
-<td>1.0</td>
-<td>0.482570</td>
-</tr>
-<tr>
-<th>60904</th>
-<td>New York, NY</td>
-<td>Rochester, NY</td>
-<td>332.757219</td>
-<td>1.0</td>
-<td>0.051134</td>
-<td>1.000000</td>
-<td>0.033274</td>
-<td>0.608696</td>
-<td>0.152174</td>
-<td>1.000000</td>
-<td>0.031068</td>
-<td>0.628190</td>
-<td>0.551285</td>
-<td>2.897446e-01</td>
-<td>0.108287</td>
-<td>0.049895</td>
-<td>1.0</td>
-<td>1.0</td>
-<td>0.481384</td>
+<th>22101</th>
+<td>Chicago, IL</td>
+<td>Cincinnati, OH</td>
+<td>295.575311</td>
+<td>0.473492</td>
+<td>0.113859</td>
+<td>0.384115</td>
+<td>0.084688</td>
+<td>0.565217</td>
+<td>0.239130</td>
+<td>0.854878</td>
+<td>0.098912</td>
+<td>0.717343</td>
+<td>0.729693</td>
+<td>6.411288e-01</td>
+<td>0.161028</td>
+<td>0.063352</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>0.485094</td>
 </tr>
 <tr>
 <th>60975</th>
@@ -8867,26 +8823,48 @@ a.anchor-link {
 <td>0.480505</td>
 </tr>
 <tr>
-<th>55386</th>
-<td>Los Angeles, CA</td>
+<th>60904</th>
 <td>New York, NY</td>
-<td>2789.931246</td>
-<td>0.655397</td>
+<td>Rochester, NY</td>
+<td>332.757219</td>
 <td>1.0</td>
-<td>0.566786</td>
+<td>0.051134</td>
 <td>1.000000</td>
-<td>1.000000</td>
+<td>0.033274</td>
 <td>0.608696</td>
-<td>0.532577</td>
+<td>0.152174</td>
 <td>1.000000</td>
-<td>0.338033</td>
+<td>0.031068</td>
 <td>0.628190</td>
-<td>0.000000e+00</td>
-<td>0.119637</td>
-<td>0.349306</td>
-<td>0.0</td>
+<td>0.551285</td>
+<td>2.897446e-01</td>
+<td>0.108287</td>
+<td>0.049895</td>
 <td>1.0</td>
-<td>0.477794</td>
+<td>1.0</td>
+<td>0.478464</td>
+</tr>
+<tr>
+<th>60881</th>
+<td>New York, NY</td>
+<td>Philadelphia, PA</td>
+<td>95.577423</td>
+<td>1.0</td>
+<td>0.318316</td>
+<td>1.000000</td>
+<td>0.238552</td>
+<td>0.608696</td>
+<td>0.413043</td>
+<td>1.000000</td>
+<td>0.264766</td>
+<td>0.628190</td>
+<td>0.702065</td>
+<td>1.685886e-15</td>
+<td>0.154709</td>
+<td>0.021388</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0.475904</td>
 </tr>
 <tr>
 <th>31572</th>
@@ -8908,161 +8886,7 @@ a.anchor-link {
 <td>0.161804</td>
 <td>1.0</td>
 <td>1.0</td>
-<td>0.472243</td>
-</tr>
-<tr>
-<th>22112</th>
-<td>Chicago, IL</td>
-<td>Columbus, OH</td>
-<td>356.189741</td>
-<td>0.473492</td>
-<td>0.109167</td>
-<td>0.384115</td>
-<td>0.076810</td>
-<td>0.565217</td>
-<td>0.304348</td>
-<td>0.854878</td>
-<td>0.101766</td>
-<td>0.717343</td>
-<td>0.737967</td>
-<td>5.234128e-01</td>
-<td>0.164134</td>
-<td>0.074299</td>
-<td>2.0</td>
-<td>2.0</td>
-<td>0.470105</td>
-</tr>
-<tr>
-<th>55406</th>
-<td>Los Angeles, CA</td>
-<td>Phoenix, AZ</td>
-<td>373.057168</td>
-<td>0.655397</td>
-<td>0.25782</td>
-<td>0.566786</td>
-<td>0.166145</td>
-<td>1.000000</td>
-<td>0.391304</td>
-<td>0.532577</td>
-<td>0.536287</td>
-<td>0.338033</td>
-<td>0.318888</td>
-<td>1.987137e-02</td>
-<td>0.377654</td>
-<td>0.156308</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>0.469808</td>
-</tr>
-<tr>
-<th>22125</th>
-<td>Chicago, IL</td>
-<td>Des Moines, IA</td>
-<td>333.514049</td>
-<td>0.473492</td>
-<td>0.034934</td>
-<td>0.384115</td>
-<td>0.029685</td>
-<td>0.565217</td>
-<td>0.043478</td>
-<td>0.854878</td>
-<td>0.036284</td>
-<td>0.717343</td>
-<td>0.559281</td>
-<td>7.032771e-01</td>
-<td>0.077552</td>
-<td>0.034136</td>
-<td>2.0</td>
-<td>2.0</td>
-<td>0.468393</td>
-</tr>
-<tr>
-<th>6422</th>
-<td>Atlanta, GA</td>
-<td>Orlando, FL</td>
-<td>438.252034</td>
-<td>0.321459</td>
-<td>0.141968</td>
-<td>0.241979</td>
-<td>0.088545</td>
-<td>0.456522</td>
-<td>0.391304</td>
-<td>0.912698</td>
-<td>0.545979</td>
-<td>0.691560</td>
-<td>0.556915</td>
-<td>8.715394e-05</td>
-<td>0.528736</td>
-<td>0.235242</td>
-<td>4.0</td>
-<td>4.0</td>
-<td>0.468286</td>
-</tr>
-<tr>
-<th>27322</th>
-<td>Dallas, TX</td>
-<td>Midland, TX</td>
-<td>330.261172</td>
-<td>0.413679</td>
-<td>0.006393</td>
-<td>0.317461</td>
-<td>0.023982</td>
-<td>0.413043</td>
-<td>0.152174</td>
-<td>0.924658</td>
-<td>0.019916</td>
-<td>0.496738</td>
-<td>0.426575</td>
-<td>6.687431e-01</td>
-<td>0.135996</td>
-<td>0.061983</td>
-<td>3.0</td>
-<td>3.0</td>
-<td>0.466910</td>
-</tr>
-<tr>
-<th>6229</th>
-<td>Atlanta, GA</td>
-<td>Charleston, SC</td>
-<td>306.838903</td>
-<td>0.321459</td>
-<td>0.040708</td>
-<td>0.241979</td>
-<td>0.024870</td>
-<td>0.456522</td>
-<td>0.478261</td>
-<td>0.912698</td>
-<td>0.066711</td>
-<td>0.691560</td>
-<td>0.554774</td>
-<td>6.119333e-01</td>
-<td>0.201240</td>
-<td>0.062540</td>
-<td>4.0</td>
-<td>4.0</td>
-<td>0.466834</td>
-</tr>
-<tr>
-<th>22258</th>
-<td>Chicago, IL</td>
-<td>Minneapolis, MN</td>
-<td>408.731941</td>
-<td>0.473492</td>
-<td>0.18796</td>
-<td>0.384115</td>
-<td>0.148500</td>
-<td>0.565217</td>
-<td>0.434783</td>
-<td>0.854878</td>
-<td>0.321868</td>
-<td>0.717343</td>
-<td>0.484770</td>
-<td>1.726630e-01</td>
-<td>0.322115</td>
-<td>0.154544</td>
-<td>2.0</td>
-<td>2.0</td>
-<td>0.466567</td>
+<td>0.467743</td>
 </tr>
 <tr>
 <th>22288</th>
@@ -9084,73 +8908,73 @@ a.anchor-link {
 <td>0.004753</td>
 <td>2.0</td>
 <td>2.0</td>
-<td>0.466466</td>
+<td>0.466559</td>
 </tr>
 <tr>
-<th>57709</th>
-<td>Miami, FL</td>
-<td>Tampa, FL</td>
-<td>282.506947</td>
-<td>0.315077</td>
-<td>0.168976</td>
-<td>0.222473</td>
-<td>0.100092</td>
-<td>0.652174</td>
-<td>0.434783</td>
-<td>0.739325</td>
-<td>0.285728</td>
-<td>0.363144</td>
-<td>0.514270</td>
-<td>3.915461e-01</td>
-<td>0.298866</td>
-<td>0.096546</td>
-<td>4.0</td>
-<td>4.0</td>
-<td>0.459617</td>
+<th>22125</th>
+<td>Chicago, IL</td>
+<td>Des Moines, IA</td>
+<td>333.514049</td>
+<td>0.473492</td>
+<td>0.034934</td>
+<td>0.384115</td>
+<td>0.029685</td>
+<td>0.565217</td>
+<td>0.043478</td>
+<td>0.854878</td>
+<td>0.036284</td>
+<td>0.717343</td>
+<td>0.559281</td>
+<td>7.032771e-01</td>
+<td>0.077552</td>
+<td>0.034136</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>0.466223</td>
 </tr>
 <tr>
-<th>63306</th>
-<td>Phoenix, AZ</td>
-<td>San Diego, CA</td>
-<td>355.660644</td>
-<td>0.25782</td>
-<td>0.165221</td>
-<td>0.166145</td>
-<td>0.135385</td>
-<td>0.391304</td>
-<td>0.543478</td>
-<td>0.536287</td>
-<td>0.237454</td>
-<td>0.318888</td>
-<td>0.298372</td>
-<td>5.363332e-01</td>
-<td>0.309149</td>
-<td>0.118713</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>0.459472</td>
+<th>22112</th>
+<td>Chicago, IL</td>
+<td>Columbus, OH</td>
+<td>356.189741</td>
+<td>0.473492</td>
+<td>0.109167</td>
+<td>0.384115</td>
+<td>0.076810</td>
+<td>0.565217</td>
+<td>0.304348</td>
+<td>0.854878</td>
+<td>0.101766</td>
+<td>0.717343</td>
+<td>0.737967</td>
+<td>5.234128e-01</td>
+<td>0.164134</td>
+<td>0.074299</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>0.465613</td>
 </tr>
 <tr>
-<th>6396</th>
-<td>Atlanta, GA</td>
-<td>Mobile, AL</td>
-<td>328.033246</td>
-<td>0.321459</td>
-<td>0.018189</td>
-<td>0.241979</td>
-<td>0.011179</td>
-<td>0.456522</td>
-<td>0.173913</td>
-<td>0.912698</td>
-<td>0.008809</td>
-<td>0.691560</td>
-<td>0.608072</td>
-<td>7.650474e-01</td>
-<td>0.055032</td>
-<td>0.022882</td>
-<td>4.0</td>
-<td>4.0</td>
-<td>0.459132</td>
+<th>27395</th>
+<td>Dallas, TX</td>
+<td>San Antonio, TX</td>
+<td>273.561068</td>
+<td>0.413679</td>
+<td>0.136108</td>
+<td>0.317461</td>
+<td>0.074003</td>
+<td>0.413043</td>
+<td>0.369565</td>
+<td>0.924658</td>
+<td>0.111182</td>
+<td>0.496738</td>
+<td>0.406717</td>
+<td>3.376247e-01</td>
+<td>0.514038</td>
+<td>0.151342</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>0.465019</td>
 </tr>
 <tr>
 <th>27342</th>
@@ -9172,7 +8996,51 @@ a.anchor-link {
 <td>0.266669</td>
 <td>3.0</td>
 <td>1.0</td>
-<td>0.458958</td>
+<td>0.464434</td>
+</tr>
+<tr>
+<th>27322</th>
+<td>Dallas, TX</td>
+<td>Midland, TX</td>
+<td>330.261172</td>
+<td>0.413679</td>
+<td>0.006393</td>
+<td>0.317461</td>
+<td>0.023982</td>
+<td>0.413043</td>
+<td>0.152174</td>
+<td>0.924658</td>
+<td>0.019916</td>
+<td>0.496738</td>
+<td>0.426575</td>
+<td>6.687431e-01</td>
+<td>0.135996</td>
+<td>0.061983</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>0.463209</td>
+</tr>
+<tr>
+<th>6229</th>
+<td>Atlanta, GA</td>
+<td>Charleston, SC</td>
+<td>306.838903</td>
+<td>0.321459</td>
+<td>0.040708</td>
+<td>0.241979</td>
+<td>0.024870</td>
+<td>0.456522</td>
+<td>0.478261</td>
+<td>0.912698</td>
+<td>0.066711</td>
+<td>0.691560</td>
+<td>0.554774</td>
+<td>6.119333e-01</td>
+<td>0.201240</td>
+<td>0.062540</td>
+<td>4.0</td>
+<td>4.0</td>
+<td>0.459899</td>
 </tr>
 <tr>
 <th>29589</th>
@@ -9194,7 +9062,341 @@ a.anchor-link {
 <td>0.174238</td>
 <td>0.0</td>
 <td>0.0</td>
-<td>0.458799</td>
+<td>0.459798</td>
+</tr>
+<tr>
+<th>55406</th>
+<td>Los Angeles, CA</td>
+<td>Phoenix, AZ</td>
+<td>373.057168</td>
+<td>0.655397</td>
+<td>0.25782</td>
+<td>0.566786</td>
+<td>0.166145</td>
+<td>1.000000</td>
+<td>0.391304</td>
+<td>0.532577</td>
+<td>0.536287</td>
+<td>0.338033</td>
+<td>0.318888</td>
+<td>1.987137e-02</td>
+<td>0.377654</td>
+<td>0.156308</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.458741</td>
+</tr>
+<tr>
+<th>22132</th>
+<td>Chicago, IL</td>
+<td>Eau Claire, WI</td>
+<td>317.654486</td>
+<td>0.473492</td>
+<td>0.00601</td>
+<td>0.384115</td>
+<td>0.003530</td>
+<td>0.565217</td>
+<td>0.021739</td>
+<td>0.854878</td>
+<td>0.000727</td>
+<td>0.717343</td>
+<td>0.507367</td>
+<td>7.641877e-01</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>0.458417</td>
+</tr>
+<tr>
+<th>22258</th>
+<td>Chicago, IL</td>
+<td>Minneapolis, MN</td>
+<td>408.731941</td>
+<td>0.473492</td>
+<td>0.18796</td>
+<td>0.384115</td>
+<td>0.148500</td>
+<td>0.565217</td>
+<td>0.434783</td>
+<td>0.854878</td>
+<td>0.321868</td>
+<td>0.717343</td>
+<td>0.484770</td>
+<td>1.726630e-01</td>
+<td>0.322115</td>
+<td>0.154544</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>0.458189</td>
+</tr>
+<tr>
+<th>59377</th>
+<td>Morgantown, WV</td>
+<td>New York, NY</td>
+<td>377.512087</td>
+<td>0.00431</td>
+<td>1.0</td>
+<td>0.002982</td>
+<td>1.000000</td>
+<td>0.086957</td>
+<td>0.608696</td>
+<td>0.001803</td>
+<td>1.000000</td>
+<td>0.676064</td>
+<td>0.628190</td>
+<td>3.243580e-01</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0.457916</td>
+</tr>
+<tr>
+<th>6396</th>
+<td>Atlanta, GA</td>
+<td>Mobile, AL</td>
+<td>328.033246</td>
+<td>0.321459</td>
+<td>0.018189</td>
+<td>0.241979</td>
+<td>0.011179</td>
+<td>0.456522</td>
+<td>0.173913</td>
+<td>0.912698</td>
+<td>0.008809</td>
+<td>0.691560</td>
+<td>0.608072</td>
+<td>7.650474e-01</td>
+<td>0.055032</td>
+<td>0.022882</td>
+<td>4.0</td>
+<td>4.0</td>
+<td>0.457525</td>
+</tr>
+<tr>
+<th>45323</th>
+<td>Houston, TX</td>
+<td>Laredo, TX</td>
+<td>314.983523</td>
+<td>0.38334</td>
+<td>0.01086</td>
+<td>0.291654</td>
+<td>0.006387</td>
+<td>0.500000</td>
+<td>0.369565</td>
+<td>0.525773</td>
+<td>0.004833</td>
+<td>0.447342</td>
+<td>0.342781</td>
+<td>9.174004e-01</td>
+<td>0.020164</td>
+<td>0.012135</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>0.456789</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=477bb55f-8882-4b6c-98b2-2003993e12d7">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [109]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">results</span><span class="p">[[</span><span class="s1">'City1'</span><span class="p">,</span><span class="s1">'City2'</span><span class="p">,</span><span class="s1">'Total_Score'</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[109]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>City1</th>
+<th>City2</th>
+<th>Total_Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>57619</th>
+<td>Miami, FL</td>
+<td>New York, NY</td>
+<td>0.652469</td>
+</tr>
+<tr>
+<th>14632</th>
+<td>Boston, MA</td>
+<td>New York, NY</td>
+<td>0.587351</td>
+</tr>
+<tr>
+<th>6389</th>
+<td>Atlanta, GA</td>
+<td>Miami, FL</td>
+<td>0.572455</td>
+</tr>
+<tr>
+<th>60973</th>
+<td>New York, NY</td>
+<td>Washington, DC</td>
+<td>0.570617</td>
+</tr>
+<tr>
+<th>60887</th>
+<td>New York, NY</td>
+<td>Portland, ME</td>
+<td>0.565233</td>
+</tr>
+<tr>
+<th>55441</th>
+<td>Los Angeles, CA</td>
+<td>San Francisco, CA</td>
+<td>0.552525</td>
+</tr>
+<tr>
+<th>17566</th>
+<td>Burlington, VT</td>
+<td>New York, NY</td>
+<td>0.548907</td>
+</tr>
+<tr>
+<th>52920</th>
+<td>Las Vegas, NV</td>
+<td>Los Angeles, CA</td>
+<td>0.546564</td>
+</tr>
+<tr>
+<th>60900</th>
+<td>New York, NY</td>
+<td>Richmond, VA</td>
+<td>0.540415</td>
+</tr>
+<tr>
+<th>16921</th>
+<td>Buffalo, NY</td>
+<td>New York, NY</td>
+<td>0.529744</td>
+</tr>
+<tr>
+<th>21352</th>
+<td>Charlottesville, VA</td>
+<td>New York, NY</td>
+<td>0.528701</td>
+</tr>
+<tr>
+<th>27253</th>
+<td>Dallas, TX</td>
+<td>Houston, TX</td>
+<td>0.521576</td>
+</tr>
+<tr>
+<th>22240</th>
+<td>Chicago, IL</td>
+<td>Louisville, KY</td>
+<td>0.519867</td>
+</tr>
+<tr>
+<th>48541</th>
+<td>Johnstown, PA</td>
+<td>New York, NY</td>
+<td>0.519308</td>
+</tr>
+<tr>
+<th>60968</th>
+<td>New York, NY</td>
+<td>Virginia Beach, VA</td>
+<td>0.518518</td>
+</tr>
+<tr>
+<th>22276</th>
+<td>Chicago, IL</td>
+<td>New York, NY</td>
+<td>0.515339</td>
+</tr>
+<tr>
+<th>53847</th>
+<td>Lewiston, ME</td>
+<td>New York, NY</td>
+<td>0.510243</td>
+</tr>
+<tr>
+<th>60883</th>
+<td>New York, NY</td>
+<td>Pittsburgh, PA</td>
+<td>0.509683</td>
+</tr>
+<tr>
+<th>27301</th>
+<td>Dallas, TX</td>
+<td>Little Rock, AR</td>
+<td>0.508377</td>
+</tr>
+<tr>
+<th>14651</th>
+<td>Boston, MA</td>
+<td>Philadelphia, PA</td>
+<td>0.505124</td>
+</tr>
+<tr>
+<th>43369</th>
+<td>Harrisonburg, VA</td>
+<td>New York, NY</td>
+<td>0.504265</td>
+</tr>
+<tr>
+<th>55442</th>
+<td>Los Angeles, CA</td>
+<td>San Jose, CA</td>
+<td>0.502676</td>
+</tr>
+<tr>
+<th>52977</th>
+<td>Las Vegas, NV</td>
+<td>Phoenix, AZ</td>
+<td>0.500251</td>
+</tr>
+<tr>
+<th>55371</th>
+<td>Los Angeles, CA</td>
+<td>Modesto, CA</td>
+<td>0.498517</td>
+</tr>
+<tr>
+<th>22359</th>
+<td>Chicago, IL</td>
+<td>St. Louis, MO</td>
+<td>0.495997</td>
 </tr>
 </tbody>
 </table>
@@ -9208,7 +9410,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [93]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [117]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Define weights</span>
@@ -9256,7 +9458,8 @@ a.anchor-link {
 
 <span class="n">region0</span><span class="p">[</span><span class="s1">'Regional_Score'</span><span class="p">]</span> <span class="o">=</span> <span class="n">region0</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">calculate_regional_score</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">results0</span> <span class="o">=</span> <span class="n">region0</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">'Regional_Score'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">results0</span><span class="p">[[</span><span class="s1">'City1'</span><span class="p">,</span><span class="s1">'City2'</span><span class="p">,</span><span class="s1">'Regional_Score'</span><span class="p">,</span><span class="s1">'drive_distance'</span><span class="p">,</span><span class="s1">'PopNorm'</span><span class="p">,</span><span class="s1">'PopNorm_City2'</span><span class="p">,</span><span class="s1">'GDPNorm'</span><span class="p">,</span><span class="s1">'GDPNorm_City2'</span><span class="p">,</span><span class="s1">'TTINorm'</span><span class="p">,</span><span class="s1">'TTINorm_City2'</span><span class="p">,</span><span class="s1">'demand_score_norm'</span><span class="p">,</span><span class="s1">'demand_score_norm_City2'</span><span class="p">,</span><span class="s1">'proximity_score'</span><span class="p">,</span><span class="s1">'proximity_score_City2'</span><span class="p">,</span><span class="s1">'gaus_dist_weight'</span><span class="p">,</span><span class="s1">'efficiency_score_norm'</span><span class="p">,</span><span class="s1">'demand_weight'</span><span class="p">,</span><span class="s1">'cluster_id'</span><span class="p">,</span><span class="s1">'cluster_id_City2'</span><span class="p">,</span><span class="s1">'Total_Score'</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">results0</span><span class="p">[[</span><span class="s1">'City1'</span><span class="p">,</span><span class="s1">'City2'</span><span class="p">,</span><span class="s1">'Regional_Score'</span><span class="p">,</span><span class="s1">'drive_distance'</span><span class="p">,</span><span class="s1">'PopNorm'</span><span class="p">,</span><span class="s1">'PopNorm_City2'</span><span class="p">,</span><span class="s1">'GDPNorm'</span><span class="p">,</span><span class="s1">'GDPNorm_City2'</span><span class="p">,</span><span class="s1">'TTINorm'</span><span class="p">,</span><span class="s1">'TTINorm_City2'</span><span class="p">,</span><span class="s1">'demand_score_norm'</span><span class="p">,</span><span class="s1">'demand_score_norm_City2'</span><span class="p">,</span><span class="s1">'proximity_score'</span><span class="p">,</span><span class="s1">'proximity_score_City2'</span><span class="p">,</span><span class="s1">'gaus_dist_weight'</span><span class="p">,</span><span class="s1">'efficiency_score_norm'</span><span class="p">,</span><span class="s1">'demand_weight'</span><span class="p">,</span><span class="s1">'cluster_id'</span><span class="p">,</span><span class="s1">'cluster_id_City2'</span><span class="p">,</span><span class="s1">'Total_Score'</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">results0</span><span class="p">[[</span><span class="s1">'City1'</span><span class="p">,</span><span class="s1">'City2'</span><span class="p">,</span><span class="s1">'Regional_Score'</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -9267,7 +9470,7 @@ a.anchor-link {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[93]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[117]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -9290,23 +9493,6 @@ a.anchor-link {
 <th>City1</th>
 <th>City2</th>
 <th>Regional_Score</th>
-<th>drive_distance</th>
-<th>PopNorm</th>
-<th>PopNorm_City2</th>
-<th>GDPNorm</th>
-<th>GDPNorm_City2</th>
-<th>TTINorm</th>
-<th>TTINorm_City2</th>
-<th>demand_score_norm</th>
-<th>demand_score_norm_City2</th>
-<th>proximity_score</th>
-<th>proximity_score_City2</th>
-<th>gaus_dist_weight</th>
-<th>efficiency_score_norm</th>
-<th>demand_weight</th>
-<th>cluster_id</th>
-<th>cluster_id_City2</th>
-<th>Total_Score</th>
 </tr>
 </thead>
 <tbody>
@@ -9315,230 +9501,60 @@ a.anchor-link {
 <td>Los Angeles, CA</td>
 <td>San Francisco, CA</td>
 <td>0.463833</td>
-<td>382.824809</td>
-<td>0.655397</td>
-<td>0.231938</td>
-<td>0.566786</td>
-<td>0.336061</td>
-<td>1.000000</td>
-<td>0.956522</td>
-<td>0.532577</td>
-<td>0.393646</td>
-<td>0.338033</td>
-<td>0.416524</td>
-<td>1.548366e-01</td>
-<td>0.746769</td>
-<td>0.323964</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>0.573665</td>
 </tr>
 <tr>
 <th>52920</th>
 <td>Las Vegas, NV</td>
 <td>Los Angeles, CA</td>
 <td>0.448542</td>
-<td>270.797521</td>
-<td>0.117207</td>
-<td>0.655397</td>
-<td>0.072923</td>
-<td>0.566786</td>
-<td>0.391304</td>
-<td>1.000000</td>
-<td>0.518789</td>
-<td>0.532577</td>
-<td>0.317168</td>
-<td>0.338033</td>
-<td>2.707235e-01</td>
-<td>0.925459</td>
-<td>0.265186</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>0.579578</td>
 </tr>
 <tr>
 <th>29589</th>
 <td>Denver, CO</td>
 <td>Los Angeles, CA</td>
 <td>0.404602</td>
-<td>1017.089257</td>
-<td>0.151598</td>
-<td>0.655397</td>
-<td>0.132216</td>
-<td>0.566786</td>
-<td>0.521739</td>
-<td>1.000000</td>
-<td>0.717504</td>
-<td>0.532577</td>
-<td>0.437650</td>
-<td>0.338033</td>
-<td>2.913305e-110</td>
-<td>0.154252</td>
-<td>0.174238</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>0.458799</td>
 </tr>
 <tr>
 <th>55406</th>
 <td>Los Angeles, CA</td>
 <td>Phoenix, AZ</td>
 <td>0.392027</td>
-<td>373.057168</td>
-<td>0.655397</td>
-<td>0.25782</td>
-<td>0.566786</td>
-<td>0.166145</td>
-<td>1.000000</td>
-<td>0.391304</td>
-<td>0.532577</td>
-<td>0.536287</td>
-<td>0.338033</td>
-<td>0.318888</td>
-<td>1.987137e-02</td>
-<td>0.377654</td>
-<td>0.156308</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>0.469808</td>
 </tr>
 <tr>
 <th>55450</th>
 <td>Los Angeles, CA</td>
 <td>Seattle, WA</td>
 <td>0.353088</td>
-<td>1136.189922</td>
-<td>0.655397</td>
-<td>0.20508</td>
-<td>0.566786</td>
-<td>0.238236</td>
-<td>1.000000</td>
-<td>0.608696</td>
-<td>0.532577</td>
-<td>0.377347</td>
-<td>0.338033</td>
-<td>0.316203</td>
-<td>8.641125e-150</td>
-<td>0.116563</td>
-<td>0.145035</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>0.426660</td>
 </tr>
 <tr>
 <th>29646</th>
 <td>Denver, CO</td>
 <td>Phoenix, AZ</td>
 <td>0.348865</td>
-<td>821.420772</td>
-<td>0.151598</td>
-<td>0.25782</td>
-<td>0.132216</td>
-<td>0.166145</td>
-<td>0.521739</td>
-<td>0.391304</td>
-<td>0.717504</td>
-<td>0.536287</td>
-<td>0.437650</td>
-<td>0.318888</td>
-<td>1.371641e-32</td>
-<td>0.255130</td>
-<td>0.226356</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>0.414614</td>
 </tr>
 <tr>
 <th>52977</th>
 <td>Las Vegas, NV</td>
 <td>Phoenix, AZ</td>
 <td>0.348189</td>
-<td>301.059531</td>
-<td>0.117207</td>
-<td>0.25782</td>
-<td>0.072923</td>
-<td>0.166145</td>
-<td>0.391304</td>
-<td>0.391304</td>
-<td>0.518789</td>
-<td>0.536287</td>
-<td>0.317168</td>
-<td>0.318888</td>
-<td>5.994001e-01</td>
-<td>0.494320</td>
-<td>0.162008</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>0.516867</td>
 </tr>
 <tr>
 <th>55442</th>
 <td>Los Angeles, CA</td>
 <td>San Jose, CA</td>
 <td>0.338169</td>
-<td>340.446064</td>
-<td>0.655397</td>
-<td>0.097104</td>
-<td>0.566786</td>
-<td>0.185324</td>
-<td>1.000000</td>
-<td>0.673913</td>
-<td>0.532577</td>
-<td>0.099002</td>
-<td>0.338033</td>
-<td>0.409367</td>
-<td>5.676338e-01</td>
-<td>0.257981</td>
-<td>0.108803</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>0.510134</td>
 </tr>
 <tr>
 <th>29681</th>
 <td>Denver, CO</td>
 <td>San Francisco, CA</td>
 <td>0.331796</td>
-<td>1248.595315</td>
-<td>0.151598</td>
-<td>0.231938</td>
-<td>0.132216</td>
-<td>0.336061</td>
-<td>0.521739</td>
-<td>0.956522</td>
-<td>0.717504</td>
-<td>0.393646</td>
-<td>0.437650</td>
-<td>0.416524</td>
-<td>6.801452e-155</td>
-<td>0.122922</td>
-<td>0.161735</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>0.394890</td>
 </tr>
 <tr>
 <th>29575</th>
 <td>Denver, CO</td>
 <td>Las Vegas, NV</td>
 <td>0.322907</td>
-<td>748.560362</td>
-<td>0.151598</td>
-<td>0.117207</td>
-<td>0.132216</td>
-<td>0.072923</td>
-<td>0.521739</td>
-<td>0.391304</td>
-<td>0.717504</td>
-<td>0.518789</td>
-<td>0.437650</td>
-<td>0.317168</td>
-<td>2.091510e-38</td>
-<td>0.240346</td>
-<td>0.194020</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>0.389711</td>
 </tr>
 </tbody>
 </table>
@@ -9552,12 +9568,13 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [95]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [118]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">region1</span><span class="p">[</span><span class="s1">'Regional_Score'</span><span class="p">]</span> <span class="o">=</span> <span class="n">region1</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">calculate_regional_score</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">results1</span> <span class="o">=</span> <span class="n">region1</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">'Regional_Score'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">results1</span><span class="p">[[</span><span class="s1">'City1'</span><span class="p">,</span><span class="s1">'City2'</span><span class="p">,</span><span class="s1">'Regional_Score'</span><span class="p">,</span><span class="s1">'drive_distance'</span><span class="p">,</span><span class="s1">'PopNorm'</span><span class="p">,</span><span class="s1">'PopNorm_City2'</span><span class="p">,</span><span class="s1">'GDPNorm'</span><span class="p">,</span><span class="s1">'GDPNorm_City2'</span><span class="p">,</span><span class="s1">'TTINorm'</span><span class="p">,</span><span class="s1">'TTINorm_City2'</span><span class="p">,</span><span class="s1">'demand_score_norm'</span><span class="p">,</span><span class="s1">'demand_score_norm_City2'</span><span class="p">,</span><span class="s1">'proximity_score'</span><span class="p">,</span><span class="s1">'proximity_score_City2'</span><span class="p">,</span><span class="s1">'gaus_dist_weight'</span><span class="p">,</span><span class="s1">'efficiency_score_norm'</span><span class="p">,</span><span class="s1">'demand_weight'</span><span class="p">,</span><span class="s1">'cluster_id'</span><span class="p">,</span><span class="s1">'cluster_id_City2'</span><span class="p">,</span><span class="s1">'Total_Score'</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">results1</span><span class="p">[[</span><span class="s1">'City1'</span><span class="p">,</span><span class="s1">'City2'</span><span class="p">,</span><span class="s1">'Regional_Score'</span><span class="p">,</span><span class="s1">'drive_distance'</span><span class="p">,</span><span class="s1">'PopNorm'</span><span class="p">,</span><span class="s1">'PopNorm_City2'</span><span class="p">,</span><span class="s1">'GDPNorm'</span><span class="p">,</span><span class="s1">'GDPNorm_City2'</span><span class="p">,</span><span class="s1">'TTINorm'</span><span class="p">,</span><span class="s1">'TTINorm_City2'</span><span class="p">,</span><span class="s1">'demand_score_norm'</span><span class="p">,</span><span class="s1">'demand_score_norm_City2'</span><span class="p">,</span><span class="s1">'proximity_score'</span><span class="p">,</span><span class="s1">'proximity_score_City2'</span><span class="p">,</span><span class="s1">'gaus_dist_weight'</span><span class="p">,</span><span class="s1">'efficiency_score_norm'</span><span class="p">,</span><span class="s1">'demand_weight'</span><span class="p">,</span><span class="s1">'cluster_id'</span><span class="p">,</span><span class="s1">'cluster_id_City2'</span><span class="p">,</span><span class="s1">'Total_Score'</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">results1</span><span class="p">[[</span><span class="s1">'City1'</span><span class="p">,</span><span class="s1">'City2'</span><span class="p">,</span><span class="s1">'Regional_Score'</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -9568,7 +9585,7 @@ a.anchor-link {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[95]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[118]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -9591,23 +9608,6 @@ a.anchor-link {
 <th>City1</th>
 <th>City2</th>
 <th>Regional_Score</th>
-<th>drive_distance</th>
-<th>PopNorm</th>
-<th>PopNorm_City2</th>
-<th>GDPNorm</th>
-<th>GDPNorm_City2</th>
-<th>TTINorm</th>
-<th>TTINorm_City2</th>
-<th>demand_score_norm</th>
-<th>demand_score_norm_City2</th>
-<th>proximity_score</th>
-<th>proximity_score_City2</th>
-<th>gaus_dist_weight</th>
-<th>efficiency_score_norm</th>
-<th>demand_weight</th>
-<th>cluster_id</th>
-<th>cluster_id_City2</th>
-<th>Total_Score</th>
 </tr>
 </thead>
 <tbody>
@@ -9616,230 +9616,60 @@ a.anchor-link {
 <td>Boston, MA</td>
 <td>New York, NY</td>
 <td>0.548827</td>
-<td>215.741565</td>
-<td>0.250056</td>
-<td>1.0</td>
-<td>0.263173</td>
-<td>1.000000</td>
-<td>0.391304</td>
-<td>0.608696</td>
-<td>0.351059</td>
-<td>1.000000</td>
-<td>0.512763</td>
-<td>0.628190</td>
-<td>1.752387e-03</td>
-<td>1.000000</td>
-<td>0.279927</td>
-<td>1.0</td>
-<td>1.0</td>
-<td>0.623355</td>
 </tr>
 <tr>
 <th>60973</th>
 <td>New York, NY</td>
 <td>Washington, DC</td>
 <td>0.537625</td>
-<td>226.807871</td>
-<td>1.0</td>
-<td>0.321341</td>
-<td>1.000000</td>
-<td>0.304358</td>
-<td>0.608696</td>
-<td>0.456522</td>
-<td>1.000000</td>
-<td>0.477669</td>
-<td>0.628190</td>
-<td>0.709058</td>
-<td>8.659782e-03</td>
-<td>0.602993</td>
-<td>0.200080</td>
-<td>1.0</td>
-<td>1.0</td>
-<td>0.590763</td>
 </tr>
 <tr>
 <th>60881</th>
 <td>New York, NY</td>
 <td>Philadelphia, PA</td>
 <td>0.429902</td>
-<td>95.577423</td>
-<td>1.0</td>
-<td>0.318316</td>
-<td>1.000000</td>
-<td>0.238552</td>
-<td>0.608696</td>
-<td>0.413043</td>
-<td>1.000000</td>
-<td>0.264766</td>
-<td>0.628190</td>
-<td>0.702065</td>
-<td>1.685886e-15</td>
-<td>0.154709</td>
-<td>0.021388</td>
-<td>1.0</td>
-<td>1.0</td>
-<td>0.482570</td>
 </tr>
 <tr>
 <th>60883</th>
 <td>New York, NY</td>
 <td>Pittsburgh, PA</td>
 <td>0.409905</td>
-<td>370.293309</td>
-<td>1.0</td>
-<td>0.121639</td>
-<td>1.000000</td>
-<td>0.082533</td>
-<td>0.608696</td>
-<td>0.260870</td>
-<td>1.000000</td>
-<td>0.105402</td>
-<td>0.628190</td>
-<td>0.717451</td>
-<td>2.799801e-01</td>
-<td>0.170619</td>
-<td>0.098507</td>
-<td>1.0</td>
-<td>1.0</td>
-<td>0.513288</td>
 </tr>
 <tr>
 <th>31572</th>
 <td>Durham, NC</td>
 <td>New York, NY</td>
 <td>0.406129</td>
-<td>488.231389</td>
-<td>0.028335</td>
-<td>1.0</td>
-<td>0.028118</td>
-<td>1.000000</td>
-<td>0.239130</td>
-<td>0.608696</td>
-<td>0.149740</td>
-<td>1.000000</td>
-<td>0.703814</td>
-<td>0.628190</td>
-<td>3.114357e-06</td>
-<td>0.251811</td>
-<td>0.161804</td>
-<td>1.0</td>
-<td>1.0</td>
-<td>0.472243</td>
 </tr>
 <tr>
 <th>16921</th>
 <td>Buffalo, NY</td>
 <td>New York, NY</td>
 <td>0.399791</td>
-<td>373.182063</td>
-<td>0.056459</td>
-<td>1.0</td>
-<td>0.037712</td>
-<td>1.000000</td>
-<td>0.195652</td>
-<td>0.608696</td>
-<td>0.052468</td>
-<td>1.000000</td>
-<td>0.567788</td>
-<td>0.628190</td>
-<td>4.789599e-01</td>
-<td>0.151671</td>
-<td>0.079574</td>
-<td>1.0</td>
-<td>1.0</td>
-<td>0.533349</td>
 </tr>
 <tr>
 <th>60900</th>
 <td>New York, NY</td>
 <td>Richmond, VA</td>
 <td>0.397532</td>
-<td>338.741643</td>
-<td>1.0</td>
-<td>0.066445</td>
-<td>1.000000</td>
-<td>0.049212</td>
-<td>0.608696</td>
-<td>0.130435</td>
-<td>1.000000</td>
-<td>0.055568</td>
-<td>0.628190</td>
-<td>0.631269</td>
-<td>5.771865e-01</td>
-<td>0.099153</td>
-<td>0.054166</td>
-<td>1.0</td>
-<td>1.0</td>
-<td>0.542665</td>
 </tr>
 <tr>
 <th>8521</th>
 <td>Baltimore, MD</td>
 <td>New York, NY</td>
 <td>0.394755</td>
-<td>190.906608</td>
-<td>0.142811</td>
-<td>1.0</td>
-<td>0.110271</td>
-<td>1.000000</td>
-<td>0.326087</td>
-<td>0.608696</td>
-<td>0.251611</td>
-<td>1.000000</td>
-<td>0.722136</td>
-<td>0.628190</td>
-<td>4.507875e-05</td>
-<td>0.039398</td>
-<td>0.010794</td>
-<td>1.0</td>
-<td>1.0</td>
-<td>0.445863</td>
 </tr>
 <tr>
 <th>60887</th>
 <td>New York, NY</td>
 <td>Portland, ME</td>
 <td>0.394478</td>
-<td>314.228868</td>
-<td>1.0</td>
-<td>0.026146</td>
-<td>1.000000</td>
-<td>0.018773</td>
-<td>0.608696</td>
-<td>0.086957</td>
-<td>1.000000</td>
-<td>0.020633</td>
-<td>0.628190</td>
-<td>0.421050</td>
-<td>7.694434e-01</td>
-<td>0.088785</td>
-<td>0.038204</td>
-<td>1.0</td>
-<td>1.0</td>
-<td>0.567762</td>
 </tr>
 <tr>
 <th>60968</th>
 <td>New York, NY</td>
 <td>Virginia Beach, VA</td>
 <td>0.392187</td>
-<td>365.561880</td>
-<td>1.0</td>
-<td>0.088946</td>
-<td>1.000000</td>
-<td>0.052533</td>
-<td>0.608696</td>
-<td>0.217391</td>
-<td>1.000000</td>
-<td>0.051403</td>
-<td>0.628190</td>
-<td>0.531726</td>
-<td>4.557591e-01</td>
-<td>0.091752</td>
-<td>0.050754</td>
-<td>1.0</td>
-<td>1.0</td>
-<td>0.520568</td>
 </tr>
 </tbody>
 </table>
@@ -9853,12 +9683,13 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [97]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [119]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">region2</span><span class="p">[</span><span class="s1">'Regional_Score'</span><span class="p">]</span> <span class="o">=</span> <span class="n">region2</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">calculate_regional_score</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">results2</span> <span class="o">=</span> <span class="n">region2</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">'Regional_Score'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">results2</span><span class="p">[[</span><span class="s1">'City1'</span><span class="p">,</span><span class="s1">'City2'</span><span class="p">,</span><span class="s1">'Regional_Score'</span><span class="p">,</span><span class="s1">'drive_distance'</span><span class="p">,</span><span class="s1">'PopNorm'</span><span class="p">,</span><span class="s1">'PopNorm_City2'</span><span class="p">,</span><span class="s1">'GDPNorm'</span><span class="p">,</span><span class="s1">'GDPNorm_City2'</span><span class="p">,</span><span class="s1">'TTINorm'</span><span class="p">,</span><span class="s1">'TTINorm_City2'</span><span class="p">,</span><span class="s1">'demand_score_norm'</span><span class="p">,</span><span class="s1">'demand_score_norm_City2'</span><span class="p">,</span><span class="s1">'proximity_score'</span><span class="p">,</span><span class="s1">'proximity_score_City2'</span><span class="p">,</span><span class="s1">'gaus_dist_weight'</span><span class="p">,</span><span class="s1">'efficiency_score_norm'</span><span class="p">,</span><span class="s1">'demand_weight'</span><span class="p">,</span><span class="s1">'cluster_id'</span><span class="p">,</span><span class="s1">'cluster_id_City2'</span><span class="p">,</span><span class="s1">'Total_Score'</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">results2</span><span class="p">[[</span><span class="s1">'City1'</span><span class="p">,</span><span class="s1">'City2'</span><span class="p">,</span><span class="s1">'Regional_Score'</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -9869,7 +9700,7 @@ a.anchor-link {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[97]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[119]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -9892,23 +9723,6 @@ a.anchor-link {
 <th>City1</th>
 <th>City2</th>
 <th>Regional_Score</th>
-<th>drive_distance</th>
-<th>PopNorm</th>
-<th>PopNorm_City2</th>
-<th>GDPNorm</th>
-<th>GDPNorm_City2</th>
-<th>TTINorm</th>
-<th>TTINorm_City2</th>
-<th>demand_score_norm</th>
-<th>demand_score_norm_City2</th>
-<th>proximity_score</th>
-<th>proximity_score_City2</th>
-<th>gaus_dist_weight</th>
-<th>efficiency_score_norm</th>
-<th>demand_weight</th>
-<th>cluster_id</th>
-<th>cluster_id_City2</th>
-<th>Total_Score</th>
 </tr>
 </thead>
 <tbody>
@@ -9917,115 +9731,60 @@ a.anchor-link {
 <td>Chicago, IL</td>
 <td>Detroit, MI</td>
 <td>0.373602</td>
-<td>282.692426</td>
-<td>0.473492</td>
-<td>0.220382</td>
-<td>0.384115</td>
-<td>0.139906</td>
-<td>0.565217</td>
-<td>0.347826</td>
-<td>0.854878</td>
-<td>0.304198</td>
-<td>0.717343</td>
-<td>0.689263</td>
-<td>0.407978</td>
-<td>0.293056</td>
-<td>0.110299</td>
-<td>2.0</td>
-<td>2.0</td>
-<td>0.499936</td>
 </tr>
 <tr>
 <th>22258</th>
 <td>Chicago, IL</td>
 <td>Minneapolis, MN</td>
 <td>0.372956</td>
-<td>408.731941</td>
-<td>0.473492</td>
-<td>0.18796</td>
-<td>0.384115</td>
-<td>0.148500</td>
-<td>0.565217</td>
-<td>0.434783</td>
-<td>0.854878</td>
-<td>0.321868</td>
-<td>0.717343</td>
-<td>0.484770</td>
-<td>0.172663</td>
-<td>0.322115</td>
-<td>0.154544</td>
-<td>2.0</td>
-<td>2.0</td>
-<td>0.466567</td>
 </tr>
 <tr>
 <th>22359</th>
 <td>Chicago, IL</td>
 <td>St. Louis, MO</td>
 <td>0.341534</td>
-<td>296.904423</td>
-<td>0.473492</td>
-<td>0.140892</td>
-<td>0.384115</td>
-<td>0.095704</td>
-<td>0.565217</td>
-<td>0.217391</td>
-<td>0.854878</td>
-<td>0.163395</td>
-<td>0.717343</td>
-<td>0.623219</td>
-<td>0.608486</td>
-<td>0.223228</td>
-<td>0.086704</td>
-<td>2.0</td>
-<td>2.0</td>
-<td>0.502823</td>
 </tr>
 <tr>
 <th>22101</th>
 <td>Chicago, IL</td>
 <td>Cincinnati, OH</td>
 <td>0.322334</td>
-<td>295.575311</td>
-<td>0.473492</td>
-<td>0.113859</td>
-<td>0.384115</td>
-<td>0.084688</td>
-<td>0.565217</td>
-<td>0.239130</td>
-<td>0.854878</td>
-<td>0.098912</td>
-<td>0.717343</td>
-<td>0.729693</td>
-<td>0.641129</td>
-<td>0.161028</td>
-<td>0.063352</td>
-<td>2.0</td>
-<td>2.0</td>
-<td>0.489978</td>
 </tr>
 <tr>
 <th>22240</th>
 <td>Chicago, IL</td>
 <td>Louisville, KY</td>
 <td>0.321587</td>
-<td>297.136816</td>
-<td>0.473492</td>
-<td>0.067259</td>
-<td>0.384115</td>
-<td>0.040565</td>
-<td>0.565217</td>
-<td>0.304348</td>
-<td>0.854878</td>
-<td>0.056937</td>
-<td>0.717343</td>
-<td>0.714490</td>
-<td>0.887936</td>
-<td>0.113237</td>
-<td>0.047627</td>
-<td>2.0</td>
-<td>2.0</td>
-<td>0.523147</td>
+</tr>
+<tr>
+<th>22112</th>
+<td>Chicago, IL</td>
+<td>Columbus, OH</td>
+<td>0.318695</td>
+</tr>
+<tr>
+<th>22125</th>
+<td>Chicago, IL</td>
+<td>Des Moines, IA</td>
+<td>0.289181</td>
+</tr>
+<tr>
+<th>22207</th>
+<td>Chicago, IL</td>
+<td>Kansas City, MO</td>
+<td>0.288605</td>
+</tr>
+<tr>
+<th>22191</th>
+<td>Chicago, IL</td>
+<td>Indianapolis, IN</td>
+<td>0.285801</td>
+</tr>
+<tr>
+<th>22257</th>
+<td>Chicago, IL</td>
+<td>Milwaukee, WI</td>
+<td>0.277168</td>
 </tr>
 </tbody>
 </table>
@@ -10039,12 +9798,13 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [98]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [120]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">region3</span><span class="p">[</span><span class="s1">'Regional_Score'</span><span class="p">]</span> <span class="o">=</span> <span class="n">region3</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">calculate_regional_score</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">results3</span> <span class="o">=</span> <span class="n">region3</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">'Regional_Score'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">results3</span><span class="p">[[</span><span class="s1">'City1'</span><span class="p">,</span><span class="s1">'City2'</span><span class="p">,</span><span class="s1">'Regional_Score'</span><span class="p">,</span><span class="s1">'drive_distance'</span><span class="p">,</span><span class="s1">'PopNorm'</span><span class="p">,</span><span class="s1">'PopNorm_City2'</span><span class="p">,</span><span class="s1">'GDPNorm'</span><span class="p">,</span><span class="s1">'GDPNorm_City2'</span><span class="p">,</span><span class="s1">'TTINorm'</span><span class="p">,</span><span class="s1">'TTINorm_City2'</span><span class="p">,</span><span class="s1">'demand_score_norm'</span><span class="p">,</span><span class="s1">'demand_score_norm_City2'</span><span class="p">,</span><span class="s1">'proximity_score'</span><span class="p">,</span><span class="s1">'proximity_score_City2'</span><span class="p">,</span><span class="s1">'gaus_dist_weight'</span><span class="p">,</span><span class="s1">'efficiency_score_norm'</span><span class="p">,</span><span class="s1">'demand_weight'</span><span class="p">,</span><span class="s1">'cluster_id'</span><span class="p">,</span><span class="s1">'cluster_id_City2'</span><span class="p">,</span><span class="s1">'Total_Score'</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">results3</span><span class="p">[[</span><span class="s1">'City1'</span><span class="p">,</span><span class="s1">'City2'</span><span class="p">,</span><span class="s1">'Regional_Score'</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -10055,7 +9815,7 @@ a.anchor-link {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[98]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[120]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -10078,23 +9838,6 @@ a.anchor-link {
 <th>City1</th>
 <th>City2</th>
 <th>Regional_Score</th>
-<th>drive_distance</th>
-<th>PopNorm</th>
-<th>PopNorm_City2</th>
-<th>GDPNorm</th>
-<th>GDPNorm_City2</th>
-<th>TTINorm</th>
-<th>TTINorm_City2</th>
-<th>demand_score_norm</th>
-<th>demand_score_norm_City2</th>
-<th>proximity_score</th>
-<th>proximity_score_City2</th>
-<th>gaus_dist_weight</th>
-<th>efficiency_score_norm</th>
-<th>demand_weight</th>
-<th>cluster_id</th>
-<th>cluster_id_City2</th>
-<th>Total_Score</th>
 </tr>
 </thead>
 <tbody>
@@ -10103,115 +9846,60 @@ a.anchor-link {
 <td>Dallas, TX</td>
 <td>Houston, TX</td>
 <td>0.476767</td>
-<td>239.181232</td>
-<td>0.413679</td>
-<td>0.38334</td>
-<td>0.317461</td>
-<td>0.291654</td>
-<td>0.413043</td>
-<td>0.500000</td>
-<td>0.924658</td>
-<td>0.525773</td>
-<td>0.496738</td>
-<td>0.447342</td>
-<td>3.407368e-02</td>
-<td>0.871963</td>
-<td>0.252245</td>
-<td>3.0</td>
-<td>3.0</td>
-<td>0.552561</td>
 </tr>
 <tr>
 <th>7662</th>
 <td>Austin, TX</td>
 <td>Dallas, TX</td>
 <td>0.358635</td>
-<td>195.118261</td>
-<td>0.124239</td>
-<td>0.413679</td>
-<td>0.101315</td>
-<td>0.317461</td>
-<td>0.500000</td>
-<td>0.413043</td>
-<td>0.217337</td>
-<td>0.924658</td>
-<td>0.441269</td>
-<td>0.496738</td>
-<td>1.049621e-04</td>
-<td>0.672146</td>
-<td>0.146358</td>
-<td>3.0</td>
-<td>3.0</td>
-<td>0.444815</td>
 </tr>
 <tr>
 <th>27395</th>
 <td>Dallas, TX</td>
 <td>San Antonio, TX</td>
 <td>0.348523</td>
-<td>273.561068</td>
-<td>0.413679</td>
-<td>0.136108</td>
-<td>0.317461</td>
-<td>0.074003</td>
-<td>0.413043</td>
-<td>0.369565</td>
-<td>0.924658</td>
-<td>0.111182</td>
-<td>0.496738</td>
-<td>0.406717</td>
-<td>3.376247e-01</td>
-<td>0.514038</td>
-<td>0.151342</td>
-<td>3.0</td>
-<td>3.0</td>
-<td>0.483154</td>
 </tr>
 <tr>
 <th>27301</th>
 <td>Dallas, TX</td>
 <td>Little Rock, AR</td>
 <td>0.312061</td>
-<td>319.005036</td>
-<td>0.413679</td>
-<td>0.036317</td>
-<td>0.317461</td>
-<td>0.020420</td>
-<td>0.413043</td>
-<td>0.239130</td>
-<td>0.924658</td>
-<td>0.028400</td>
-<td>0.496738</td>
-<td>0.546893</td>
-<td>8.741829e-01</td>
-<td>0.136744</td>
-<td>0.057796</td>
-<td>3.0</td>
-<td>3.0</td>
-<td>0.512324</td>
 </tr>
 <tr>
 <th>27341</th>
 <td>Dallas, TX</td>
 <td>New Orleans, LA</td>
 <td>0.301269</td>
-<td>506.578921</td>
-<td>0.413679</td>
-<td>0.046508</td>
-<td>0.317461</td>
-<td>0.042045</td>
-<td>0.413043</td>
-<td>0.543478</td>
-<td>0.924658</td>
-<td>0.147839</td>
-<td>0.496738</td>
-<td>0.517354</td>
-<td>2.778998e-08</td>
-<td>0.201774</td>
-<td>0.112687</td>
-<td>3.0</td>
-<td>3.0</td>
-<td>0.376367</td>
+</tr>
+<tr>
+<th>27322</th>
+<td>Dallas, TX</td>
+<td>Midland, TX</td>
+<td>0.293083</td>
+</tr>
+<tr>
+<th>2292</th>
+<td>Alexandria, LA</td>
+<td>Dallas, TX</td>
+<td>0.287495</td>
+</tr>
+<tr>
+<th>27328</th>
+<td>Dallas, TX</td>
+<td>Monroe, LA</td>
+<td>0.287322</td>
+</tr>
+<tr>
+<th>27211</th>
+<td>Dallas, TX</td>
+<td>Fayetteville, AR</td>
+<td>0.284462</td>
+</tr>
+<tr>
+<th>27307</th>
+<td>Dallas, TX</td>
+<td>Lubbock, TX</td>
+<td>0.281801</td>
 </tr>
 </tbody>
 </table>
@@ -10225,12 +9913,13 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [99]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [121]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">region4</span><span class="p">[</span><span class="s1">'Regional_Score'</span><span class="p">]</span> <span class="o">=</span> <span class="n">region4</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">calculate_regional_score</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">results4</span> <span class="o">=</span> <span class="n">region4</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">'Regional_Score'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">results4</span><span class="p">[[</span><span class="s1">'City1'</span><span class="p">,</span><span class="s1">'City2'</span><span class="p">,</span><span class="s1">'Regional_Score'</span><span class="p">,</span><span class="s1">'drive_distance'</span><span class="p">,</span><span class="s1">'PopNorm'</span><span class="p">,</span><span class="s1">'PopNorm_City2'</span><span class="p">,</span><span class="s1">'GDPNorm'</span><span class="p">,</span><span class="s1">'GDPNorm_City2'</span><span class="p">,</span><span class="s1">'TTINorm'</span><span class="p">,</span><span class="s1">'TTINorm_City2'</span><span class="p">,</span><span class="s1">'demand_score_norm'</span><span class="p">,</span><span class="s1">'demand_score_norm_City2'</span><span class="p">,</span><span class="s1">'proximity_score'</span><span class="p">,</span><span class="s1">'proximity_score_City2'</span><span class="p">,</span><span class="s1">'gaus_dist_weight'</span><span class="p">,</span><span class="s1">'efficiency_score_norm'</span><span class="p">,</span><span class="s1">'demand_weight'</span><span class="p">,</span><span class="s1">'cluster_id'</span><span class="p">,</span><span class="s1">'cluster_id_City2'</span><span class="p">,</span><span class="s1">'Total_Score'</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">results4</span><span class="p">[[</span><span class="s1">'City1'</span><span class="p">,</span><span class="s1">'City2'</span><span class="p">,</span><span class="s1">'Regional_Score'</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -10241,7 +9930,7 @@ a.anchor-link {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[99]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[121]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -10264,23 +9953,6 @@ a.anchor-link {
 <th>City1</th>
 <th>City2</th>
 <th>Regional_Score</th>
-<th>drive_distance</th>
-<th>PopNorm</th>
-<th>PopNorm_City2</th>
-<th>GDPNorm</th>
-<th>GDPNorm_City2</th>
-<th>TTINorm</th>
-<th>TTINorm_City2</th>
-<th>demand_score_norm</th>
-<th>demand_score_norm_City2</th>
-<th>proximity_score</th>
-<th>proximity_score_City2</th>
-<th>gaus_dist_weight</th>
-<th>efficiency_score_norm</th>
-<th>demand_weight</th>
-<th>cluster_id</th>
-<th>cluster_id_City2</th>
-<th>Total_Score</th>
 </tr>
 </thead>
 <tbody>
@@ -10289,115 +9961,60 @@ a.anchor-link {
 <td>Atlanta, GA</td>
 <td>Miami, FL</td>
 <td>0.531627</td>
-<td>664.196511</td>
-<td>0.321459</td>
-<td>0.315077</td>
-<td>0.241979</td>
-<td>0.222473</td>
-<td>0.456522</td>
-<td>0.652174</td>
-<td>0.912698</td>
-<td>0.739325</td>
-<td>0.691560</td>
-<td>0.363144</td>
-<td>1.216358e-28</td>
-<td>0.715373</td>
-<td>0.491214</td>
-<td>4.0</td>
-<td>4.0</td>
-<td>0.583663</td>
 </tr>
 <tr>
 <th>6422</th>
 <td>Atlanta, GA</td>
 <td>Orlando, FL</td>
 <td>0.406607</td>
-<td>438.252034</td>
-<td>0.321459</td>
-<td>0.141968</td>
-<td>0.241979</td>
-<td>0.088545</td>
-<td>0.456522</td>
-<td>0.391304</td>
-<td>0.912698</td>
-<td>0.545979</td>
-<td>0.691560</td>
-<td>0.556915</td>
-<td>8.715394e-05</td>
-<td>0.528736</td>
-<td>0.235242</td>
-<td>4.0</td>
-<td>4.0</td>
-<td>0.468286</td>
 </tr>
 <tr>
 <th>21019</th>
 <td>Charlotte, NC</td>
 <td>Miami, FL</td>
 <td>0.375754</td>
-<td>732.962707</td>
-<td>0.141309</td>
-<td>0.315077</td>
-<td>0.104490</td>
-<td>0.222473</td>
-<td>0.282609</td>
-<td>0.652174</td>
-<td>0.584679</td>
-<td>0.739325</td>
-<td>0.679462</td>
-<td>0.363144</td>
-<td>2.324076e-39</td>
-<td>0.328010</td>
-<td>0.249185</td>
-<td>4.0</td>
-<td>4.0</td>
-<td>0.438985</td>
 </tr>
 <tr>
 <th>6231</th>
 <td>Atlanta, GA</td>
 <td>Charlotte, NC</td>
 <td>0.367011</td>
-<td>244.503896</td>
-<td>0.321459</td>
-<td>0.141309</td>
-<td>0.241979</td>
-<td>0.104490</td>
-<td>0.456522</td>
-<td>0.282609</td>
-<td>0.912698</td>
-<td>0.584679</td>
-<td>0.691560</td>
-<td>0.679462</td>
-<td>4.881083e-02</td>
-<td>0.282754</td>
-<td>0.083786</td>
-<td>4.0</td>
-<td>4.0</td>
-<td>0.425042</td>
 </tr>
 <tr>
 <th>57629</th>
 <td>Miami, FL</td>
 <td>Orlando, FL</td>
 <td>0.355756</td>
-<td>236.617145</td>
-<td>0.315077</td>
-<td>0.141968</td>
-<td>0.222473</td>
-<td>0.088545</td>
-<td>0.652174</td>
-<td>0.391304</td>
-<td>0.739325</td>
-<td>0.545979</td>
-<td>0.363144</td>
-<td>0.556915</td>
-<td>2.010449e-02</td>
-<td>0.455899</td>
-<td>0.119093</td>
-<td>4.0</td>
-<td>4.0</td>
-<td>0.427876</td>
+</tr>
+<tr>
+<th>6502</th>
+<td>Atlanta, GA</td>
+<td>Tampa, FL</td>
+<td>0.344621</td>
+</tr>
+<tr>
+<th>57709</th>
+<td>Miami, FL</td>
+<td>Tampa, FL</td>
+<td>0.326185</td>
+</tr>
+<tr>
+<th>6409</th>
+<td>Atlanta, GA</td>
+<td>Nashville, TN</td>
+<td>0.312254</td>
+</tr>
+<tr>
+<th>6333</th>
+<td>Atlanta, GA</td>
+<td>Jacksonville, FL</td>
+<td>0.305021</td>
+</tr>
+<tr>
+<th>6229</th>
+<td>Atlanta, GA</td>
+<td>Charleston, SC</td>
+<td>0.303048</td>
 </tr>
 </tbody>
 </table>
